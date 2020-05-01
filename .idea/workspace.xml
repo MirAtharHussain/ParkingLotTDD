@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a0e75a36-5cd9-48cb-ae65-68afafe28c19" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bridgelabz/ParkingLot/ParkingLotSystem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/bridgelabz/ParkingLot/ParkingLotTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bridgelabz/ParkingLot/ParkingLot.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +41,33 @@
       <recent name="com.bridgelabz.ParkingLot" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="ParkingLotTest.givenAVehicle_WhenParked_ShouldReturnTrue" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;com.bridgelabz.ParkingLot.ParkingLotTest.givenAVehicle_WhenParked_ShouldReturnTrue&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":cleanTest" />
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.ParkingLotTest.givenAVehicle_WhenParked_ShouldReturnTrue" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -58,6 +82,22 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state width="1306" height="176" key="GridCell.Tab.0.bottom" timestamp="1588316028505">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1306" height="176" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1588316028505" />
+    <state width="1306" height="176" key="GridCell.Tab.0.center" timestamp="1588316028505">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1306" height="176" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1588316028505" />
+    <state width="1306" height="176" key="GridCell.Tab.0.left" timestamp="1588316028505">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1306" height="176" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1588316028505" />
+    <state width="1306" height="176" key="GridCell.Tab.0.right" timestamp="1588316028505">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1306" height="176" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1588316028505" />
     <state x="263" y="113" key="IDE.errors.dialog" timestamp="1588315449097">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
