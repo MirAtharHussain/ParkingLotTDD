@@ -12,7 +12,7 @@ public class ParkingLotTest {
     @Before
     public void setUp() throws Exception {
         vehicle = new Object();
-        parkingLotSystem = new ParkingLotSystem(2);
+        parkingLotSystem = new ParkingLotSystem(1);
     }
     @Test
     public void givenAVehicle_WhenParked_ShouldReturnTrue() {
@@ -75,7 +75,7 @@ public class ParkingLotTest {
     @Test
     public void givenWhenParkingLot_ISFull_ShouldInformTheOwner() {
         ParkingLotOwner owner = new ParkingLotOwner();
-        parkingLotSystem.registerOwner(owner);
+        parkingLotSystem.registerParkingLotObserver(owner);
         try {
             parkingLotSystem.park(vehicle);
             parkingLotSystem.park(new Object());
@@ -95,5 +95,17 @@ public class ParkingLotTest {
             boolean isParked2 = parkingLotSystem.isVehicleParked(vehicle2);
             Assert.assertTrue(isParked1 && isParked2);
         } catch (ParkingLotException e) { }
+    }
+
+    @Test
+    public void givenWhenParkingLotIsFull_ShouldInformTheSecurity() {
+        AirportSecurity airportSecurity = new AirportSecurity();
+        parkingLotSystem.registerParkingLotObserver(airportSecurity);
+        try {
+            parkingLotSystem.park(vehicle);
+            parkingLotSystem.park(new Object());
+        } catch (ParkingLotException e) { }
+        boolean capacityFull = airportSecurity.isCapacityFull();
+        Assert.assertTrue(capacityFull);
     }
 }

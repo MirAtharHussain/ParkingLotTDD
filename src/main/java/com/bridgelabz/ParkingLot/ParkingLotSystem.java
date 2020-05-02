@@ -5,17 +5,19 @@ import java.util.List;
 
 public class ParkingLotSystem {
 
+    private  List<ParkingLotObserver> observers;
     private List vehicles;
     private  int actualCapacity;
     private ParkingLotOwner owner;
 
 
     public ParkingLotSystem(int capacity) {
+        this.observers = new ArrayList<>();
         this.vehicles = new ArrayList<>();
         this.actualCapacity = capacity;
     }
-    public void registerOwner(ParkingLotOwner owner) {
-        this.owner = owner;
+    public void registerParkingLotObserver(ParkingLotObserver observer) {
+        this.observers.add(observer);
     }
 
     public void  setCapacity(int capacity) {
@@ -25,9 +27,13 @@ public class ParkingLotSystem {
 
     public void park(Object vehicle) throws ParkingLotException {
         if (this.vehicles.size()  == this.actualCapacity) {
-            owner.capacityIsFull();
+           for (ParkingLotObserver observer: observers){
+               observer.capacityIsFull();
+           }
             throw new ParkingLotException("Parking Lot is Full");
         }
+        if (isVehicleParked(vehicle))
+            throw new ParkingLotException("Vehicle Already Parked");
         this.vehicles.add(vehicle);
     }
 
@@ -44,4 +50,6 @@ public class ParkingLotSystem {
             return true;
         return false;
     }
+
+
 }
