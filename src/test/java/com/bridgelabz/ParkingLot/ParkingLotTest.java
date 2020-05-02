@@ -108,4 +108,18 @@ public class ParkingLotTest {
         boolean capacityFull = airportSecurity.isCapacityFull();
         Assert.assertTrue(capacityFull);
     }
+
+    @Test
+    public void givenWhenParkingLotSpaceIsAvailableAfterFull_ShouldReturnTrue() {
+        Object vehicle2 = new Object();
+        ParkingLotOwner owner = new ParkingLotOwner();
+        parkingLotSystem.registerParkingLotObserver(owner);
+        try {
+            parkingLotSystem.park(vehicle);
+            parkingLotSystem.park(vehicle2);
+        } catch (ParkingLotException e) { }
+        parkingLotSystem.unPark(vehicle);
+        boolean capacityFull = owner.isCapacityFull();
+        Assert.assertFalse(capacityFull);
+    }
 }
