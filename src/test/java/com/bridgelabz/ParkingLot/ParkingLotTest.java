@@ -122,4 +122,27 @@ public class ParkingLotTest {
         boolean capacityFull = owner.isCapacityFull();
         Assert.assertFalse(capacityFull);
     }
+    @Test
+    public void givenWhenParkingLotSpaceIsAvailableAfterFull__InformSecurity_ShouldReturnTrue() {
+        Object vehicle2 = new Object();
+        AirportSecurity airportSecurity = new AirportSecurity();
+        parkingLotSystem.registerParkingLotObserver(airportSecurity);
+        try {
+            parkingLotSystem.park(vehicle);
+            parkingLotSystem.park(vehicle2);
+        } catch (ParkingLotException e) { }
+        parkingLotSystem.unPark(vehicle);
+        boolean capacityFull = airportSecurity.isCapacityFull();
+        Assert.assertFalse(capacityFull);
+    }
+    @Test
+    public void givenSameVehicle_WhenAlreadyParked_ShouldReturnTrue() {
+        try {
+            parkingLotSystem.park(vehicle);
+            parkingLotSystem.park(vehicle);
+        } catch (ParkingLotException e) {
+            Assert.assertEquals("Vehicle Already Parked",e.getMessage());
+            e.printStackTrace();
+        }
+    }
 }
