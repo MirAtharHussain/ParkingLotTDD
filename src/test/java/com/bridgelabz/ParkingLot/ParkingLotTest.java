@@ -145,4 +145,16 @@ public class ParkingLotTest {
             e.printStackTrace();
         }
     }
+
+    @Test
+    public void givenAsParkingLotOwner_WantParkingAttendant_ToParkcars() {
+        boolean vehicleParked = false;
+        ParkingLotOwner owner = new ParkingLotOwner();
+        parkingLotSystem.registerParkingLotObserver(owner);
+        boolean capacityFull = owner.isCapacityFull();
+        if (!capacityFull) {
+           vehicleParked = owner.parkingLotAttendant(vehicle);
+        }
+        Assert.assertTrue(vehicleParked);
+    }
 }
