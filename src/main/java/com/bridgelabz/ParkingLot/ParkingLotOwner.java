@@ -20,7 +20,7 @@ public class ParkingLotOwner implements  ParkingLotObserver {
 
     public boolean parkingLotAttendant(Object vehicle) {
         prakingLotAttendant = new PrakingLotAttendant();
-        boolean parkVehicle = prakingLotAttendant.parkVehicle(vehicle);
-        return parkVehicle;
+        return prakingLotAttendant.parkVehicle(vehicle);
+
     }
 }
