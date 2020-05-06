@@ -23,7 +23,7 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">14</div>
+<div class="counter">15</div>
 <p>tests</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.035s</div>
+<div class="counter">0.165s</div>
 <p>duration</p>
 </div>
 </td>
@@ -64,7 +64,10 @@
 <a href="#tab0">Tests</a>
 </li>
 <li>
-<a href="#tab1">Standard error</a>
+<a href="#tab1">Standard output</a>
+</li>
+<li>
+<a href="#tab2">Standard error</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
@@ -79,12 +82,12 @@
 </thead>
 <tr>
 <td class="success">givenAOtherVehicle_WhenUnparked_ShouldReturnFalse</td>
-<td class="success">0s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givenAVehicle_WhenAlreadyParked_ShouldReturnFalse</td>
-<td class="success">0.004s</td>
+<td class="success">0.032s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -99,22 +102,22 @@
 </tr>
 <tr>
 <td class="success">givenAsParkingLotOwner_WantParkingAttendant_ToParkcars</td>
-<td class="success">0.001s</td>
+<td class="success">0.034s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givenCapacityIs2_ShouldBeAbleToPark2Vehicles</td>
-<td class="success">0.001s</td>
+<td class="success">0s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givenFindMyVehicle_WhenVehicleIsNotParked_ShouldReturnException</td>
-<td class="success">0.013s</td>
+<td class="success">0.014s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givenFindMyVehicle_WhenVehicleIsParked_ShouldReturnTrue</td>
-<td class="success">0s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -123,18 +126,23 @@
 <td class="success">passed</td>
 </tr>
 <tr>
+<td class="success">givenParkingLotOwner_WantParkingAttendant_ToEvenlyDirectCars_ToLots</td>
+<td class="success">0.007s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
 <td class="success">givenSameVehicle_WhenAlreadyParked_ShouldReturnTrue</td>
-<td class="success">0.012s</td>
+<td class="success">0.066s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givenWhenParkingLotIsFull_ShouldInformTheSecurity</td>
-<td class="success">0.001s</td>
+<td class="success">0.004s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givenWhenParkingLotSpaceIsAvailableAfterFull_ShouldReturnTrue</td>
-<td class="success">0.003s</td>
+<td class="success">0.006s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -150,11 +158,22 @@
 </table>
 </div>
 <div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>1 0
+1 0
+1 1
+2 1
+2 2
+</pre>
+</span>
+</div>
+<div id="tab2" class="tab">
 <h2>Standard error</h2>
 <span class="code">
 <pre>com.bridgelabz.ParkingLot.ParkingLotException: Vehicle Already Parked
 	at com.bridgelabz.ParkingLot.ParkingLotSystem.park(ParkingLotSystem.java:30)
-	at com.bridgelabz.ParkingLot.ParkingLotTest.givenSameVehicle_WhenAlreadyParked_ShouldReturnTrue(ParkingLotTest.java:153)
+	at com.bridgelabz.ParkingLot.ParkingLotTest.givenSameVehicle_WhenAlreadyParked_ShouldReturnTrue(ParkingLotTest.java:156)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -205,7 +224,7 @@
 	at java.lang.Thread.run(Thread.java:748)
 com.bridgelabz.ParkingLot.ParkingLotException: VEHICLE_NOT_FOUND
 	at com.bridgelabz.ParkingLot.ParkingLotSystem.findMyVehicle(ParkingLotSystem.java:60)
-	at com.bridgelabz.ParkingLot.ParkingLotTest.givenFindMyVehicle_WhenVehicleIsNotParked_ShouldReturnException(ParkingLotTest.java:188)
+	at com.bridgelabz.ParkingLot.ParkingLotTest.givenFindMyVehicle_WhenVehicleIsNotParked_ShouldReturnException(ParkingLotTest.java:191)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -256,7 +275,7 @@ com.bridgelabz.ParkingLot.ParkingLotException: VEHICLE_NOT_FOUND
 	at java.lang.Thread.run(Thread.java:748)
 com.bridgelabz.ParkingLot.ParkingLotException: Parking Lot is Full
 	at com.bridgelabz.ParkingLot.ParkingLotSystem.park(ParkingLotSystem.java:35)
-	at com.bridgelabz.ParkingLot.ParkingLotTest.givenAVehicle_WhenAlreadyParked_ShouldReturnFalse(ParkingLotTest.java:39)
+	at com.bridgelabz.ParkingLot.ParkingLotTest.givenAVehicle_WhenAlreadyParked_ShouldReturnFalse(ParkingLotTest.java:44)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -316,7 +335,7 @@ com.bridgelabz.ParkingLot.ParkingLotException: Parking Lot is Full
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 5.2.1</a> at May 5, 2020 12:27:09 AM</p>
+<a href="http://www.gradle.org">Gradle 5.2.1</a> at May 6, 2020 9:50:38 AM</p>
 </div>
 </div>
 </body>

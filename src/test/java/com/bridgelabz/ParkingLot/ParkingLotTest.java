@@ -9,14 +9,21 @@ public class ParkingLotTest {
     public Vehicle vehicle0;
     public Vehicle vehicle1;
     public Vehicle vehicle2;
+    public Vehicle vehicle3;
     ParkingLotSystem parkingLotSystem;
+
+
+
 
     @Before
     public void setUp() throws Exception {
         vehicle0 = new Vehicle("KA01RG007");
         vehicle1 = new Vehicle("KA01RG0060");
-        vehicle2 = new Vehicle("KA01RG0010");
+        vehicle2 = new Vehicle("KA01GF0010");
+        vehicle2 = new Vehicle("KA01RG9294");
+
         parkingLotSystem = new ParkingLotSystem(2);
+
     }
     @Test
     public void givenAVehicle_WhenParked_ShouldReturnTrue() {
@@ -70,7 +77,7 @@ public class ParkingLotTest {
     public void givenAOtherVehicle_WhenUnparked_ShouldReturnFalse() {
         try {
             parkingLotSystem.park(vehicle0);
-            boolean isUnparked = parkingLotSystem.unPark(new Object());
+            boolean isUnparked = parkingLotSystem.unPark(vehicle1);
             Assert.assertFalse(isUnparked);
         } catch (ParkingLotException e) {
             e.printStackTrace();
@@ -92,7 +99,6 @@ public class ParkingLotTest {
 
     @Test
     public void givenCapacityIs2_ShouldBeAbleToPark2Vehicles() {
-        Object vehicle2 = new Object();
         parkingLotSystem.setCapacity(2);
         try {
             parkingLotSystem.park(vehicle0);
@@ -131,7 +137,6 @@ public class ParkingLotTest {
     }
     @Test
     public void givenWhenParkingLotSpaceIsAvailableAfterFull__InformSecurity_ShouldReturnTrue() {
-        Object vehicle2 = new Object();
         AirportSecurity airportSecurity = new AirportSecurity();
         parkingLotSystem.registerParkingLotObserver(airportSecurity);
         try {
@@ -156,7 +161,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void givenAsParkingLotOwner_WantParkingAttendant_ToParkcars() {
+    public void givenAsParkingLotOwner_WantParkingAttendant_ToParkcars() throws ParkingLotException {
         boolean vehicleParked = false;
         ParkingLotOwner owner = new ParkingLotOwner();
         parkingLotSystem.registerParkingLotObserver(owner);
@@ -188,6 +193,18 @@ public class ParkingLotTest {
             Assert.assertEquals("VEHICLE_NOT_FOUND",e.getMessage());
             e.printStackTrace();
         }
-
     }
+
+  @Test
+    public void givenParkingLotOwner_WantParkingAttendant_ToEvenlyDirectCars_ToLots() throws ParkingLotException {
+        parkingLotSystem.setCapacity(5);
+      ParkingLot parkingLot1 = new ParkingLot(5);
+      ParkingLot parkingLot2 = new ParkingLot(5);
+      ParkingLotAttendant attendant = new ParkingLotAttendant(parkingLot1, parkingLot2);
+      boolean car0 = attendant.parkVehicle(vehicle0);
+      boolean car1 = attendant.parkVehicle(vehicle1);
+      boolean car2 = attendant.parkVehicle(vehicle2);
+      boolean car3 = attendant.parkVehicle(vehicle3);
+
+  }
 }

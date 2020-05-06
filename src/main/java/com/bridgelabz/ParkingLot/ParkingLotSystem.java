@@ -1,21 +1,21 @@
 package com.bridgelabz.ParkingLot;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalTime;
+import java.util.*;
 
 public class ParkingLotSystem {
 
     private  List<ParkingLotObserver> observers;
-    private List vehicleList;
     private  int actualCapacity;
-    private ParkingLotOwner owner;
-
+    private List vehicleList;
+    ParkingLotOwner owner;
 
     public ParkingLotSystem(int capacity) {
         this.observers = new ArrayList<>();
-        this.vehicleList = new ArrayList<>();
+        this.vehicleList = new ArrayList();
         this.actualCapacity = capacity;
     }
+
     public void registerParkingLotObserver(ParkingLotObserver observer) {
         this.observers.add(observer);
     }
@@ -25,7 +25,7 @@ public class ParkingLotSystem {
     }
 
 
-    public void park(Object vehicle) throws ParkingLotException {
+    public void park(Vehicle vehicle) throws ParkingLotException {
         if (isVehicleParked(vehicle))
             throw new ParkingLotException("Vehicle Already Parked");
         if (this.vehicleList.size()  == this.actualCapacity) {
@@ -37,7 +37,7 @@ public class ParkingLotSystem {
         this.vehicleList.add(vehicle);
     }
 
-    public boolean unPark(Object vehicle)  {
+    public boolean unPark(Vehicle vehicle)  {
         if (vehicle == null) return false;
         if (this.vehicleList.contains(vehicle)){
             this.vehicleList.remove(vehicle);
@@ -48,7 +48,7 @@ public class ParkingLotSystem {
         }
         return false;
     }
-    public boolean isVehicleParked(Object vehicle) {
+    public boolean isVehicleParked(Vehicle vehicle) {
         if (this.vehicleList.contains(vehicle))
             return true;
         return false;
@@ -58,6 +58,7 @@ public class ParkingLotSystem {
     public boolean findMyVehicle(Vehicle vehicle) throws ParkingLotException {
         if (!vehicleList.contains(vehicle))
             throw new ParkingLotException("VEHICLE_NOT_FOUND");
+        unPark(vehicle);
         return true;
     }
 }
