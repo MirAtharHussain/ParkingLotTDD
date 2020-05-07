@@ -1,9 +1,13 @@
 package com.bridgelabz.ParkingLot;
 
-public class ParkingLotOwner implements  ParkingLotObserver {
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
+public class ParkingLotOwner implements  ParkingLotObserver {
     private boolean isFullCapacity;
     ParkingLotAttendant parkingLotAttendant = null;
+    public static Map<Vehicle, ArrayList<Object>> listOfParkedCar = new HashMap<>();
 
     @Override
     public void capacityIsFull(){
@@ -19,12 +23,14 @@ public class ParkingLotOwner implements  ParkingLotObserver {
         return this.isFullCapacity;
     }
 
-    public boolean parkingLotAttendant(Vehicle vehicle) throws ParkingLotException {
-            ParkingLot parkingLot1 = new ParkingLot(5);
-            ParkingLot parkingLot2 = new ParkingLot(5);
-        parkingLotAttendant = new ParkingLotAttendant(parkingLot1, parkingLot2);
-        return parkingLotAttendant.parkVehicle(vehicle);
 
+    public String getCarParkedTime(Vehicle vehicle)  {
+        ArrayList<Object> time = listOfParkedCar.get(vehicle);
+        return time.get(4).toString();
+    }
+
+    public int[] parkingLotAttendant(Vehicle vehicle, ArrayList<Object> details) throws ParkingLotException {
+        return parkingLotAttendant.parkVehicle(vehicle, details);
     }
 
 }
