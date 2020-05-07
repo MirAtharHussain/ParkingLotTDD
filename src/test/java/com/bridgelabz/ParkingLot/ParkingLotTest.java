@@ -207,4 +207,9 @@ public class ParkingLotTest {
       boolean car3 = attendant.parkVehicle(vehicle3);
 
   }
+
+    @Test
+    public void givenHandicapDriver_WantAttendantToPark_CarToTheNearestFreeSpace() {
+
+    }
 }
