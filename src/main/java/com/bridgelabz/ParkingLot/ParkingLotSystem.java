@@ -1,7 +1,6 @@
 package com.bridgelabz.ParkingLot;
 
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
@@ -9,12 +8,12 @@ public class ParkingLotSystem {
 
     private List<ParkingLotObserver> observers;
     private int actualCapacity;
-    public Map<Vehicle, ArrayList<Object>> vehicleList;
+    public Map<Vehicle, VehicleDetails> vehicleList;
     List<ParkingLot> parkingLots = ParkingLotAttendant.parkingLots;
 
     public ParkingLotSystem(int capacity) {
         this.observers = new ArrayList<>();
-        this.vehicleList = new HashMap<>();
+        this.vehicleList = new HashMap<Vehicle, VehicleDetails>();
         this.actualCapacity = capacity;
     }
 
@@ -26,7 +25,7 @@ public class ParkingLotSystem {
         this.actualCapacity = capacity;
     }
 
-    public int[] park(Vehicle vehicle, ArrayList<Object> details) throws ParkingLotException {
+    public int[] park(Vehicle vehicle, VehicleDetails details) throws ParkingLotException {
         int arr[] = new int[2];
         if (isVehicleParked(vehicle))
             throw new ParkingLotException("Vehicle Already Parked",ParkingLotException.ExceptionType.VEHICLE_ALREADY_PARKED);
@@ -38,15 +37,10 @@ public class ParkingLotSystem {
         }
 
         if (!vehicleList.containsKey(vehicle)) {
-            LocalDateTime current = LocalDateTime.now();
-            DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-            String parkedTime = current.format(format);
-            details.add(parkedTime);
-
 
             boolean proceed = true;
-            for (int i = 0; i < parkingLots.size(); i++) {
-                if ((int) parkingLots.get(i).space[0] == 0) {
+           for (int i = 0; i < parkingLots.size(); i++){
+               if ((int) parkingLots.get(i).space[0] == 0) {
                     parkingLots.get(i).space[1] = vehicle;
                     parkingLots.get(i).space[0] = 1;
                     proceed = false;
@@ -74,7 +68,6 @@ public class ParkingLotSystem {
             }
 
             vehicleList.put(vehicle, details);
-            ParkingLotOwner.listOfParkedCar.put(vehicle, details);
         }
         return arr;
     }
@@ -116,7 +109,7 @@ public class ParkingLotSystem {
 
     public boolean findMyVehicle(Vehicle vehicle) throws ParkingLotException {
         if (!vehicleList.containsKey(vehicle))
-            throw new ParkingLotException("VEHICLE_NOT_FOUND");
+            throw new ParkingLotException("VEHICLE_NOT_FOUND", ParkingLotException.ExceptionType.VEHICLE_NOT_FOUND);
         return true;
 
     }

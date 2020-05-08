@@ -14,13 +14,13 @@ public class ParkingLotAttendant {
             parkingLots.add(c);
         }
     }
-    public int[] parkVehicle(Vehicle vehicle,ArrayList<Object> vehicleDetails) throws ParkingLotException {
+    public int[] parkVehicle(Vehicle vehicle, VehicleDetails vehicleDetails) throws ParkingLotException {
         int [] vehicleArray = parkingLot.park(vehicle, vehicleDetails);
         return vehicleArray;
     }
 
 
-    public int[] findVehicle(Vehicle vehicle, ArrayList<Object> vehicleDetails) throws ParkingLotException {
+    public int[] findVehicle(Vehicle vehicle, VehicleDetails vehicleDetails) throws ParkingLotException {
         int[] vehicles = parkingLot.park(vehicle, vehicleDetails);
         return  vehicles;
     }

@@ -7,7 +7,6 @@ import java.util.Map;
 public class ParkingLotOwner implements  ParkingLotObserver {
     private boolean isFullCapacity;
     ParkingLotAttendant parkingLotAttendant = null;
-    public static Map<Vehicle, ArrayList<Object>> listOfParkedCar = new HashMap<>();
 
     @Override
     public void capacityIsFull(){
@@ -24,13 +23,10 @@ public class ParkingLotOwner implements  ParkingLotObserver {
     }
 
 
-    public String getCarParkedTime(Vehicle vehicle)  {
-        ArrayList<Object> time = listOfParkedCar.get(vehicle);
-        return time.get(4).toString();
-    }
-
-    public int[] parkingLotAttendant(Vehicle vehicle, ArrayList<Object> details) throws ParkingLotException {
-        return parkingLotAttendant.parkVehicle(vehicle, details);
+    public int[] parkingLotAttendant(Vehicle vehicle, VehicleDetails details) throws ParkingLotException {
+        int[] parkVehicle = parkingLotAttendant.parkVehicle(vehicle, details);
+        System.out.println(parkVehicle);
+        return  parkVehicle;
     }
 
 }

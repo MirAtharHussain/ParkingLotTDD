@@ -16,9 +16,9 @@ public class ParkingLotTest {
     ParkingLotSystem parkingLotSystem = null;
 
     ParkingLotAttendant attendant;
-    ArrayList<Object> details = null;
-    ArrayList<Object> details1;
-    ArrayList<Object> details2;
+    VehicleDetails details;
+    VehicleDetails details1;
+    VehicleDetails details2;
 
 
     @Before
@@ -33,12 +33,10 @@ public class ParkingLotTest {
         ParkingLot parkingLot2 = new ParkingLot(5);
 
         attendant = new ParkingLotAttendant(parkingLot1, parkingLot2);
-        details = new ArrayList<>();
-        details.add(Color.WHITE);
-        details1 = new ArrayList<>();
-        details1.add(Color.BLACK);
-        details2 = new ArrayList<>();
-        details2.add(Color.BLUE);
+
+        details = new VehicleDetails(VEhicleAttributes.Driver.HANDICAP, VEhicleAttributes.Color.BLUE, VEhicleAttributes.Size.LARGE, VEhicleAttributes.Model.TOYOTA);
+        details1 = new VehicleDetails(VEhicleAttributes.Driver.NORMAL, VEhicleAttributes.Color.WHITE, VEhicleAttributes.Size.LARGE, VEhicleAttributes.Model.BMW);
+        details2 = new VehicleDetails(VEhicleAttributes.Driver.HANDICAP, VEhicleAttributes.Color.WHITE, VEhicleAttributes.Size.SMALL, VEhicleAttributes.Model.TOYOTA);
 
     }
 
@@ -55,12 +53,13 @@ public class ParkingLotTest {
 
     @Test
     public void givenAVehicle_WhenAlreadyParked_ShouldReturnFalse() {
+        parkingLotSystem.setCapacity(2);
         try {
             parkingLotSystem.park(vehicle0, details);
             parkingLotSystem.park(vehicle1, details1);
             parkingLotSystem.park(vehicle2, details2);
         } catch (ParkingLotException e) {
-            Assert.assertEquals(ParkingLotException.ExceptionType.VEHICLE_ALREADY_PARKED, e.getMessage());
+            Assert.assertEquals(ParkingLotException.ExceptionType.PARKINGLOT_FULL, e.type);
             e.printStackTrace();
         }
     }
@@ -69,7 +68,7 @@ public class ParkingLotTest {
     public void givenAVehicle_WhenUnParked_ShouldReturnPosition() {
         try {
             attendant.parkVehicle(vehicle0, details);
-            int[] unPark = parkingLotSystem.unPark(vehicle0);
+            int[] unPark = attendant.unparkVehicle(vehicle0);
             int[] result = {0, 1};
             Assert.assertArrayEquals(result, unPark);
         } catch (ParkingLotException e) {
@@ -79,12 +78,13 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void givenNoVehicleParked_WhenUnPark_ShouldReturnFalse() {
+    public void givenNoVehicleParked_WhenUnPark_ShouldReturnException() {
         try {
             int[] unPark = parkingLotSystem.unPark(vehicle0);
             int[] result = {0, 1};
             Assert.assertArrayEquals(result, unPark);
         } catch (ParkingLotException e) {
+            Assert.assertEquals(ParkingLotException.ExceptionType.NO_VEHICLE_FOUND, e.type);
             e.printStackTrace();
         }
 
@@ -98,6 +98,7 @@ public class ParkingLotTest {
             int[] result = {0, 1};
             Assert.assertArrayEquals(result, unparkVehicle);
         } catch (ParkingLotException e) {
+            Assert.assertEquals(ParkingLotException.ExceptionType.NO_VEHICLE_FOUND, e.type);
             e.printStackTrace();
         }
     }
@@ -181,22 +182,22 @@ public class ParkingLotTest {
             parkingLotSystem.park(vehicle1, details1);
             parkingLotSystem.park(vehicle0, details);
         } catch (ParkingLotException e) {
-            Assert.assertEquals("Vehicle Already Parked", e.getMessage());
+            Assert.assertEquals(ParkingLotException.ExceptionType.VEHICLE_ALREADY_PARKED, e.type);
             e.printStackTrace();
         }
     }
 
     @Test
     public void givenAsParkingLotOwner_WantParkingAttendant_ToParkcars() throws ParkingLotException {
-        int[] parkedPosition = null;
+        boolean vehicleParked = false;
         ParkingLotOwner owner = new ParkingLotOwner();
         parkingLotSystem.registerParkingLotObserver(owner);
         boolean capacityFull = owner.isCapacityFull();
         if (!capacityFull) {
-            parkedPosition = owner.parkingLotAttendant(vehicle0, details);
+            parkingLotSystem.park(vehicle0, details);
+            vehicleParked = parkingLotSystem.isVehicleParked(vehicle0);
         }
-        int[] result = {0, 1};
-        Assert.assertArrayEquals(result, parkedPosition);
+      Assert.assertTrue(vehicleParked);
     }
 
     @Test
@@ -240,8 +241,6 @@ public class ParkingLotTest {
 
     @Test
     public void givenHandicapDriver_WantAttendantToParkVehicle() {
-        details.add(VehicleDetails.Driver.NORMAL);
-        details1.add(VehicleDetails.Driver.HANDICAP);
         try {
             int[] car = attendant.parkVehicle(vehicle0, details);
             int[] car1 = attendant.parkVehicle(vehicle1, details1);
