@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelabz.ParkingLot.ParkingLotTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2020-05-04T18:57:08" hostname="Macifier" time="0.042">
+<testsuite name="com.bridgelabz.ParkingLot.ParkingLotTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2020-05-08T16:04:49" hostname="Macifier" time="0.462">
   <properties/>
-  <testcase name="givenWhenParkingLotSpaceIsAvailableAfterFull_ShouldReturnTrue" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.003"/>
-  <testcase name="givenFindMyVehicle_WhenVehicleIsParked_ShouldReturnTrue" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.0"/>
-  <testcase name="givenWhenParkingLotIsFull_ShouldInformTheSecurity" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.001"/>
+  <testcase name="givenWhenParkingLotSpaceIsAvailableAfterFull_ShouldReturnTrue" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.013"/>
+  <testcase name="givenFindMyVehicle_WhenVehicleIsParked_ShouldReturnTrue" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.002"/>
+  <testcase name="givenWhenParkingLotIsFull_ShouldInformTheSecurity" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.004"/>
   <testcase name="givenAOtherVehicle_WhenUnparked_ShouldReturnFalse" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.0"/>
-  <testcase name="givenAVehicle_WhenParked_ShouldReturnTrue" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.0"/>
-  <testcase name="givenAsParkingLotOwner_WantParkingAttendant_ToParkcars" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.001"/>
-  <testcase name="givenSameVehicle_WhenAlreadyParked_ShouldReturnTrue" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.012"/>
-  <testcase name="givenFindMyVehicle_WhenVehicleIsNotParked_ShouldReturnException" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.013"/>
-  <testcase name="givenAVehicle_WhenUnParked_ShouldReturnTrue" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.0"/>
-  <testcase name="givenWhenParkingLot_ISFull_ShouldInformTheOwner" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.0"/>
-  <testcase name="givenWhenParkingLotSpaceIsAvailableAfterFull__InformSecurity_ShouldReturnTrue" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.0"/>
+  <testcase name="givenAVehicle_WhenParked_ShouldReturnTrue" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.001"/>
+  <testcase name="givenAsParkingLotOwner_WantParkingAttendant_ToParkcars" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.003"/>
+  <testcase name="givenSameVehicle_WhenAlreadyParked_ShouldReturnTrue" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.093"/>
+  <testcase name="givenFindMyVehicle_WhenVehicleIsNotParked_ShouldReturnException" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.17"/>
+  <testcase name="givenAVehicle_WhenUnParked_ShouldReturnTrue" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.001"/>
+  <testcase name="givenWhenParkingLot_ISFull_ShouldInformTheOwner" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.001"/>
+  <testcase name="givenWhenParkingLotSpaceIsAvailableAfterFull__InformSecurity_ShouldReturnTrue" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.012"/>
   <testcase name="givenCapacityIs2_ShouldBeAbleToPark2Vehicles" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.001"/>
-  <testcase name="givenAVehicle_WhenAlreadyParked_ShouldReturnFalse" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.004"/>
-  <testcase name="givenNoVehicleParked_WhenUnPark_ShouldReturnFalse" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.0"/>
+  <testcase name="givenAVehicle_WhenAlreadyParked_ShouldReturnFalse" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.124"/>
+  <testcase name="givenNoVehicleParked_WhenUnPark_ShouldReturnFalse" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[com.bridgelabz.ParkingLot.ParkingLotException: Vehicle Already Parked
 	at com.bridgelabz.ParkingLot.ParkingLotSystem.park(ParkingLotSystem.java:30)
-	at com.bridgelabz.ParkingLot.ParkingLotTest.givenSameVehicle_WhenAlreadyParked_ShouldReturnTrue(ParkingLotTest.java:153)
+	at com.bridgelabz.ParkingLot.ParkingLotTest.givenSameVehicle_WhenAlreadyParked_ShouldReturnTrue(ParkingLotTest.java:148)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -69,7 +69,7 @@
 	at java.lang.Thread.run(Thread.java:748)
 com.bridgelabz.ParkingLot.ParkingLotException: VEHICLE_NOT_FOUND
 	at com.bridgelabz.ParkingLot.ParkingLotSystem.findMyVehicle(ParkingLotSystem.java:60)
-	at com.bridgelabz.ParkingLot.ParkingLotTest.givenFindMyVehicle_WhenVehicleIsNotParked_ShouldReturnException(ParkingLotTest.java:188)
+	at com.bridgelabz.ParkingLot.ParkingLotTest.givenFindMyVehicle_WhenVehicleIsNotParked_ShouldReturnException(ParkingLotTest.java:183)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -120,7 +120,7 @@ com.bridgelabz.ParkingLot.ParkingLotException: VEHICLE_NOT_FOUND
 	at java.lang.Thread.run(Thread.java:748)
 com.bridgelabz.ParkingLot.ParkingLotException: Parking Lot is Full
 	at com.bridgelabz.ParkingLot.ParkingLotSystem.park(ParkingLotSystem.java:35)
-	at com.bridgelabz.ParkingLot.ParkingLotTest.givenAVehicle_WhenAlreadyParked_ShouldReturnFalse(ParkingLotTest.java:39)
+	at com.bridgelabz.ParkingLot.ParkingLotTest.givenAVehicle_WhenAlreadyParked_ShouldReturnFalse(ParkingLotTest.java:37)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

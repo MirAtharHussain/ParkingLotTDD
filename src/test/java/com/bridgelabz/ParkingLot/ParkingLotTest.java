@@ -36,7 +36,7 @@ public class ParkingLotTest {
             parkingLotSystem.park(vehicle1);
             parkingLotSystem.park(vehicle2);
         } catch (ParkingLotException e) {
-            Assert.assertEquals("Parking Lot is Full",e.getMessage());
+            Assert.assertEquals(ParkingLotException.ExceptionType.PARKINGLOT_FULL,e.type);
             e.printStackTrace();
         }
     }
@@ -92,7 +92,6 @@ public class ParkingLotTest {
 
     @Test
     public void givenCapacityIs2_ShouldBeAbleToPark2Vehicles() {
-        Object vehicle2 = new Object();
         parkingLotSystem.setCapacity(2);
         try {
             parkingLotSystem.park(vehicle0);
@@ -118,7 +117,6 @@ public class ParkingLotTest {
 
     @Test
     public void givenWhenParkingLotSpaceIsAvailableAfterFull_ShouldReturnTrue() {
-        Object vehicle2 = new Object();
         ParkingLotOwner owner = new ParkingLotOwner();
         parkingLotSystem.registerParkingLotObserver(owner);
         try {
@@ -131,7 +129,6 @@ public class ParkingLotTest {
     }
     @Test
     public void givenWhenParkingLotSpaceIsAvailableAfterFull__InformSecurity_ShouldReturnTrue() {
-        Object vehicle2 = new Object();
         AirportSecurity airportSecurity = new AirportSecurity();
         parkingLotSystem.registerParkingLotObserver(airportSecurity);
         try {
@@ -150,7 +147,7 @@ public class ParkingLotTest {
             parkingLotSystem.park(vehicle1);
             parkingLotSystem.park(vehicle0);
         } catch (ParkingLotException e) {
-            Assert.assertEquals("Vehicle Already Parked",e.getMessage());
+            Assert.assertEquals(ParkingLotException.ExceptionType.VEHICLE_PARKED_ALREADY,e.type);
             e.printStackTrace();
         }
     }
@@ -185,7 +182,7 @@ public class ParkingLotTest {
             parkingLotSystem.park(vehicle2);
             parkingLotSystem.findMyVehicle(vehicle0);
         } catch (ParkingLotException e) {
-            Assert.assertEquals("VEHICLE_NOT_FOUND",e.getMessage());
+            Assert.assertEquals(ParkingLotException.ExceptionType.VEHICLE_NOT_FOUND,e.type);
             e.printStackTrace();
         }
 
