@@ -29,12 +29,12 @@ public class ParkingLotSystem {
     public int[] park(Vehicle vehicle, ArrayList<Object> details) throws ParkingLotException {
         int arr[] = new int[2];
         if (isVehicleParked(vehicle))
-            throw new ParkingLotException("Vehicle Already Parked");
+            throw new ParkingLotException("Vehicle Already Parked",ParkingLotException.ExceptionType.VEHICLE_ALREADY_PARKED);
         if (vehicleList.size() == actualCapacity) {
             for (ParkingLotObserver observer : observers) {
                 observer.capacityIsFull();
             }
-            throw new ParkingLotException("Parking Lot is Full");
+            throw new ParkingLotException("Parking Lot is Full", ParkingLotException.ExceptionType.PARKINGLOT_FULL);
         }
 
         if (!vehicleList.containsKey(vehicle)) {
@@ -90,7 +90,7 @@ public class ParkingLotSystem {
         arr[0] = -1;
         arr[1] = -1;
         if (!vehicleList.containsKey(vehicle))
-            throw new ParkingLotException("NO Vehicle Found");
+            throw new ParkingLotException("NO Vehicle Found",ParkingLotException.ExceptionType.NO_VEHICLE_FOUND);
         if (vehicleList.containsKey(vehicle)) {
 
             for (int i = 0; i < parkingLots.size(); i++) {

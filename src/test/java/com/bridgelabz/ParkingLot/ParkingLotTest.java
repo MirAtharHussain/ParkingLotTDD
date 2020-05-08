@@ -60,7 +60,7 @@ public class ParkingLotTest {
             parkingLotSystem.park(vehicle1, details1);
             parkingLotSystem.park(vehicle2, details2);
         } catch (ParkingLotException e) {
-            Assert.assertEquals("Parking Lot is Full", e.getMessage());
+            Assert.assertEquals(ParkingLotException.ExceptionType.VEHICLE_ALREADY_PARKED, e.getMessage());
             e.printStackTrace();
         }
     }

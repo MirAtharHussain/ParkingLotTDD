@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelabz.ParkingLot.ParkingLotTest" tests="16" skipped="0" failures="4" errors="0" timestamp="2020-05-07T23:00:49" hostname="Macifier" time="4.64">
+<testsuite name="com.bridgelabz.ParkingLot.ParkingLotTest" tests="16" skipped="0" failures="4" errors="0" timestamp="2020-05-08T04:59:54" hostname="Macifier" time="0.258">
   <properties/>
-  <testcase name="givenHandicapDriver_WantAttendantToParkVehicle" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="4.474"/>
-  <testcase name="givenWhenParkingLotSpaceIsAvailableAfterFull_ShouldReturnTrue" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.005">
+  <testcase name="givenHandicapDriver_WantAttendantToParkVehicle" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.064"/>
+  <testcase name="givenWhenParkingLotSpaceIsAvailableAfterFull_ShouldReturnTrue" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.004">
     <failure message="java.lang.NullPointerException" type="java.lang.NullPointerException">java.lang.NullPointerException
 	at com.bridgelabz.ParkingLot.ParkingLotSystem.unPark(ParkingLotSystem.java:100)
 	at com.bridgelabz.ParkingLot.ParkingLotTest.givenWhenParkingLotSpaceIsAvailableAfterFull_ShouldReturnTrue(ParkingLotTest.java:157)
@@ -56,11 +56,11 @@
 	at java.lang.Thread.run(Thread.java:748)
 </failure>
   </testcase>
-  <testcase name="givenFindMyVehicle_WhenVehicleIsParked_ShouldReturnTrue" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.001"/>
-  <testcase name="givenWhenParkingLotIsFull_ShouldInformTheSecurity" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.081"/>
-  <testcase name="givenAVehicle_WhenUnParked_ShouldReturnPosition" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.012"/>
-  <testcase name="givenAOtherVehicle_WhenUnparked_ShouldReturnFalse" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.007"/>
-  <testcase name="givenAVehicle_WhenParked_ShouldReturnTrue" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.0"/>
+  <testcase name="givenFindMyVehicle_WhenVehicleIsParked_ShouldReturnTrue" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.0"/>
+  <testcase name="givenWhenParkingLotIsFull_ShouldInformTheSecurity" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.024"/>
+  <testcase name="givenAVehicle_WhenUnParked_ShouldReturnPosition" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.079"/>
+  <testcase name="givenAOtherVehicle_WhenUnparked_ShouldReturnFalse" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.012"/>
+  <testcase name="givenAVehicle_WhenParked_ShouldReturnTrue" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.001"/>
   <testcase name="givenAsParkingLotOwner_WantParkingAttendant_ToParkcars" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.001">
     <failure message="java.lang.NullPointerException" type="java.lang.NullPointerException">java.lang.NullPointerException
 	at com.bridgelabz.ParkingLot.ParkingLotOwner.parkingLotAttendant(ParkingLotOwner.java:33)
@@ -115,7 +115,7 @@
 	at java.lang.Thread.run(Thread.java:748)
 </failure>
   </testcase>
-  <testcase name="givenParkingLotOwner_WantParkingAttendant_ToEvenlyDirectCars_ToLots" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.011">
+  <testcase name="givenParkingLotOwner_WantParkingAttendant_ToEvenlyDirectCars_ToLots" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.002">
     <failure message="arrays first differed at element [0]; expected:&lt;0&gt; but was:&lt;11&gt;" type="org.junit.internal.ArrayComparisonFailure">arrays first differed at element [0]; expected:&lt;0&gt; but was:&lt;11&gt;
 	at org.junit.internal.ComparisonCriteria.arrayEquals(ComparisonCriteria.java:55)
 	at org.junit.Assert.internalArrayEquals(Assert.java:532)
@@ -180,10 +180,10 @@ Caused by: java.lang.AssertionError: expected:&lt;0&gt; but was:&lt;11&gt;
 	... 52 more
 </failure>
   </testcase>
-  <testcase name="givenSameVehicle_WhenAlreadyParked_ShouldReturnTrue" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.013"/>
-  <testcase name="givenFindMyVehicle_WhenVehicleIsNotParked_ShouldReturnException" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.006"/>
+  <testcase name="givenSameVehicle_WhenAlreadyParked_ShouldReturnTrue" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.026"/>
+  <testcase name="givenFindMyVehicle_WhenVehicleIsNotParked_ShouldReturnException" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.004"/>
   <testcase name="givenWhenParkingLot_ISFull_ShouldInformTheOwner" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.001"/>
-  <testcase name="givenWhenParkingLotSpaceIsAvailableAfterFull__InformSecurity_ShouldReturnTrue" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.002">
+  <testcase name="givenWhenParkingLotSpaceIsAvailableAfterFull__InformSecurity_ShouldReturnTrue" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.001">
     <failure message="java.lang.NullPointerException" type="java.lang.NullPointerException">java.lang.NullPointerException
 	at com.bridgelabz.ParkingLot.ParkingLotSystem.unPark(ParkingLotSystem.java:100)
 	at com.bridgelabz.ParkingLot.ParkingLotTest.givenWhenParkingLotSpaceIsAvailableAfterFull__InformSecurity_ShouldReturnTrue(ParkingLotTest.java:170)
@@ -237,9 +237,9 @@ Caused by: java.lang.AssertionError: expected:&lt;0&gt; but was:&lt;11&gt;
 	at java.lang.Thread.run(Thread.java:748)
 </failure>
   </testcase>
-  <testcase name="givenCapacityIs2_ShouldBeAbleToPark2Vehicles" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.001"/>
-  <testcase name="givenAVehicle_WhenAlreadyParked_ShouldReturnFalse" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.005"/>
-  <testcase name="givenNoVehicleParked_WhenUnPark_ShouldReturnFalse" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.016"/>
+  <testcase name="givenCapacityIs2_ShouldBeAbleToPark2Vehicles" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.0"/>
+  <testcase name="givenAVehicle_WhenAlreadyParked_ShouldReturnFalse" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.0"/>
+  <testcase name="givenNoVehicleParked_WhenUnPark_ShouldReturnFalse" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.028"/>
   <system-out><![CDATA[[11, 1]
 ]]></system-out>
   <system-err><![CDATA[com.bridgelabz.ParkingLot.ParkingLotException: NO Vehicle Found
