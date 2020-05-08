@@ -22,11 +22,9 @@ public class ParkingLotOwner implements  ParkingLotObserver {
         return this.isFullCapacity;
     }
 
+    public boolean parkingLotAttendant(Object vehicle) {
+        parkingLotAttendant = new ParkingLotAttendant();
+        return parkingLotAttendant.parkVehicle(vehicle);
 
-    public int[] parkingLotAttendant(Vehicle vehicle, VehicleDetails details) throws ParkingLotException {
-        int[] parkVehicle = parkingLotAttendant.parkVehicle(vehicle, details);
-        System.out.println(parkVehicle);
-        return  parkVehicle;
     }
-
 }
