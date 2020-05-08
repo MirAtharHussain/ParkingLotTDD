@@ -1,6 +1,6 @@
 package com.bridgelabz.ParkingLot;
 
-public class VEhicleAttributes {
+public class VehicleAttributes {
     enum Size{
         SMALL,LARGE
     }

@@ -3,8 +3,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.awt.*;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ParkingLotTest {
@@ -34,9 +32,9 @@ public class ParkingLotTest {
 
         attendant = new ParkingLotAttendant(parkingLot1, parkingLot2);
 
-        details = new VehicleDetails(VEhicleAttributes.Driver.HANDICAP, VEhicleAttributes.Color.BLUE, VEhicleAttributes.Size.LARGE, VEhicleAttributes.Model.TOYOTA);
-        details1 = new VehicleDetails(VEhicleAttributes.Driver.NORMAL, VEhicleAttributes.Color.WHITE, VEhicleAttributes.Size.LARGE, VEhicleAttributes.Model.BMW);
-        details2 = new VehicleDetails(VEhicleAttributes.Driver.HANDICAP, VEhicleAttributes.Color.WHITE, VEhicleAttributes.Size.SMALL, VEhicleAttributes.Model.TOYOTA);
+        details = new VehicleDetails(VehicleAttributes.Driver.HANDICAP, VehicleAttributes.Color.BLUE, VehicleAttributes.Size.LARGE, VehicleAttributes.Model.TOYOTA);
+        details1 = new VehicleDetails(VehicleAttributes.Driver.NORMAL, VehicleAttributes.Color.WHITE, VehicleAttributes.Size.LARGE, VehicleAttributes.Model.BMW);
+        details2 = new VehicleDetails(VehicleAttributes.Driver.HANDICAP, VehicleAttributes.Color.WHITE, VehicleAttributes.Size.SMALL, VehicleAttributes.Model.TOYOTA);
 
     }
 
