@@ -97,7 +97,7 @@ public class ParkingLotSystem {
                 Object[] vehicleParkArray = parkingLots.get(i).space;
                 if ((int) vehicleParkArray[0] != 0) {
                     for (int j = 1; j < vehicleParkArray.length; j++) {
-                        if (vehicleParkArray[i].equals(vehicle)) {
+                        if (vehicleParkArray[j].equals(vehicle)) {
                             int size = (int) parkingLots.get(i).space[0];
                             parkingLots.get(i).space[size] = 0;
                             parkingLots.get(i).space[0] = size - 1;

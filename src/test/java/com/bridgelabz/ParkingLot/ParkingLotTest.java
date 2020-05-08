@@ -9,14 +9,14 @@ import java.util.Arrays;
 
 public class ParkingLotTest {
 
-    public Vehicle vehicle0;
-    public Vehicle vehicle1;
-    public Vehicle vehicle2;
-    public Vehicle vehicle3;
-    ParkingLotSystem parkingLotSystem;
+    public Vehicle vehicle0 = null;
+    public Vehicle vehicle1 = null;
+    public Vehicle vehicle2 = null;
+    public Vehicle vehicle3 = null;
+    ParkingLotSystem parkingLotSystem = null;
 
     ParkingLotAttendant attendant;
-    ArrayList<Object> details;
+    ArrayList<Object> details = null;
     ArrayList<Object> details1;
     ArrayList<Object> details2;
 
@@ -28,9 +28,10 @@ public class ParkingLotTest {
         vehicle2 = new Vehicle("KA01GF0010");
         vehicle2 = new Vehicle("KA01RG9294");
 
-        parkingLotSystem = new ParkingLotSystem(2);
-        ParkingLot parkingLot1 = new ParkingLot(2);
-        ParkingLot parkingLot2 = new ParkingLot(2);
+        parkingLotSystem = new ParkingLotSystem(8);
+        ParkingLot parkingLot1 = new ParkingLot(5);
+        ParkingLot parkingLot2 = new ParkingLot(5);
+
         attendant = new ParkingLotAttendant(parkingLot1, parkingLot2);
         details = new ArrayList<>();
         details.add(Color.WHITE);
@@ -103,6 +104,7 @@ public class ParkingLotTest {
 
     @Test
     public void givenWhenParkingLot_ISFull_ShouldInformTheOwner() {
+        parkingLotSystem.setCapacity(2);
         ParkingLotOwner owner = new ParkingLotOwner();
         parkingLotSystem.registerParkingLotObserver(owner);
         try {
@@ -130,6 +132,7 @@ public class ParkingLotTest {
 
     @Test
     public void givenWhenParkingLotIsFull_ShouldInformTheSecurity() {
+        parkingLotSystem.setCapacity(2);
         AirportSecurity airportSecurity = new AirportSecurity();
         parkingLotSystem.registerParkingLotObserver(airportSecurity);
         try {
@@ -158,14 +161,15 @@ public class ParkingLotTest {
 
     @Test
     public void givenWhenParkingLotSpaceIsAvailableAfterFull__InformSecurity_ShouldReturnTrue() throws ParkingLotException {
+        parkingLotSystem.setCapacity(2);
         AirportSecurity airportSecurity = new AirportSecurity();
         parkingLotSystem.registerParkingLotObserver(airportSecurity);
         try {
-            attendant.parkVehicle(vehicle0, details);
-            attendant.parkVehicle(vehicle1, details1);
-        } catch (ParkingLotException e) {
-        }
-        attendant.unparkVehicle(vehicle0);
+            parkingLotSystem.park(vehicle0, details);
+            parkingLotSystem.park(vehicle1, details2);
+            parkingLotSystem.unPark(vehicle0);
+        } catch (ParkingLotException e) { }
+
         boolean capacityFull = airportSecurity.isCapacityFull();
         Assert.assertFalse(capacityFull);
     }
@@ -220,15 +224,36 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void givenParkingLotOwner_WantParkingAttendant_ToEvenlyDirectCars_ToLots() throws ParkingLotException {
+    public void givenParkingLotOwner_WantParkingAttendant_ToEvenlyDirectCars_ToLots()  {
 
-        int[] car = attendant.parkVehicle(vehicle0, details);
-        int[] car1 = attendant.parkVehicle(vehicle1, details1);
-        System.out.println(Arrays.toString(car1));
-        int[] result = {1, 1};
-        int[] result1 = {0, 1};
-        Assert.assertArrayEquals(result1, car);
-        Assert.assertArrayEquals(result, car1);
+        try {
+            int[] car = attendant.parkVehicle(vehicle0, details);
+            int[] car1 = attendant.parkVehicle(vehicle1, details1);
+            System.out.println(Arrays.toString(car));
+            int[] result = {0, 1};
+            Assert.assertArrayEquals(result, car);
+        } catch (ParkingLotException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Test
+    public void givenHandicapDriver_WantAttendantToParkVehicle() {
+        details.add(VehicleDetails.Driver.NORMAL);
+        details1.add(VehicleDetails.Driver.HANDICAP);
+        try {
+            int[] car = attendant.parkVehicle(vehicle0, details);
+            int[] car1 = attendant.parkVehicle(vehicle1, details1);
+            int[] result = {1, 1};
+            int[] result1 = {0, 1};
+            Assert.assertArrayEquals(result1, car);
+            Assert.assertArrayEquals(result, car1);
+        } catch (ParkingLotException e) {
+            e.printStackTrace();
+        }
+
+
     }
 }
 
