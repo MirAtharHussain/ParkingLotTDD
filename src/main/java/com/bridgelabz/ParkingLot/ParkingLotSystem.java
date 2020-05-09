@@ -5,58 +5,60 @@ import java.util.*;
 public class ParkingLotSystem {
 
     private  List<ParkingLotObserver> observers;
-    private List vehicleList;
-    private  int actualCapacity;
-    private ParkingLotOwner owner;
+    private List<ParkingLot> parkingLotList;
+    private boolean isParkingFull;
+    private int actualCapacity;
 
 
-    public ParkingLotSystem(int capacity) {
+    public ParkingLotSystem(ParkingLot...parkingLots) {
         this.observers = new ArrayList<>();
-        this.vehicleList = new ArrayList<>();
-        this.actualCapacity = capacity;
+        this.parkingLotList = new ArrayList<>();
+        this.parkingLotList.addAll(Arrays.asList(parkingLots));
     }
+
     public void registerParkingLotObserver(ParkingLotObserver observer) {
         this.observers.add(observer);
     }
-
-    public void  setCapacity(int capacity) {
-        this.actualCapacity = capacity;
+    public  void setCapacity(int capacity){
+        actualCapacity = capacity;
     }
 
+    public ParkingLot getLot() throws ParkingLotException {
+        ParkingLot parkingLot = this.getParkingLot(parkingLotList);
+       if( parkingLot.parkingSlotsList.stream().filter(parkingSlot -> parkingSlot.getVehicle()==null).count()==0) {
+           this.isParkingFull = true;
+           throw new ParkingLotException("Parking Lot is Full", ParkingLotException.ExceptionType.PARKINGLOT_FULL);
 
-    public void park(Object vehicle) throws ParkingLotException {
-        if (isVehicleParked(vehicle))
-            throw new ParkingLotException("Vehicle Already Parked", ParkingLotException.ExceptionType.VEHICLE_PARKED_ALREADY);
-        if (this.vehicleList.size()  == this.actualCapacity) {
-            for (ParkingLotObserver observer: observers){
-                observer.capacityIsFull();
-            }
-            throw new ParkingLotException("Parking Lot is Full", ParkingLotException.ExceptionType.PARKINGLOT_FULL);
         }
-        this.vehicleList.add(vehicle);
+       this.isParkingFull = false;
+       return  parkingLot;
     }
 
-    public boolean unPark(Object vehicle)  {
-        if (vehicle == null) return false;
-        if (this.vehicleList.contains(vehicle)){
-            this.vehicleList.remove(vehicle);
-            for (ParkingLotObserver observer: observers){
-                observer.capacityIsAvailable();
-            }
-            return true;
-        }
-        return false;
-    }
-    public boolean isVehicleParked(Object vehicle) {
-        if (this.vehicleList.contains(vehicle))
-            return true;
-        return false;
+    public boolean park(Vehicle vehicle) throws ParkingLotException {
+            this.observers.forEach((observer)-> {observer.capacityIsFull();});
+            return this.getLot().parkVehicleInToSlots(vehicle);
     }
 
+    public boolean unPark(Vehicle vehicle) throws ParkingLotException {
+        this.observers.forEach((observer)-> {observer.capacityIsAvailable();});
+        return this.getLot().unparkVehicle(vehicle);
 
-    public boolean findMyVehicle(Vehicle vehicle) throws ParkingLotException {
-        if (!vehicleList.contains(vehicle))
-            throw new ParkingLotException("VEHICLE_NOT_FOUND",ParkingLotException.ExceptionType.VEHICLE_NOT_FOUND);
-        return true;
+    }
+
+    public ParkingLot findMyVehicle(Vehicle vehicle) throws ParkingLotException {
+        return this.parkingLotList.stream().
+                filter(parkingLot -> parkingLot.parkingSlotsList.stream().map(ParkingSlot::getVehicle).anyMatch(vehicle1 -> vehicle1 == vehicle)).
+                findFirst().orElseThrow(()-> new ParkingLotException("VEHICLE_NOT_FOUND", ParkingLotException.ExceptionType.VEHICLE_NOT_FOUND));
+    }
+
+    public ParkingLot getParkingLot(List<ParkingLot> parkingLotList){
+        ArrayList<ParkingLot> sortList = new ArrayList<>();
+        sortList.addAll(parkingLotList);
+        sortList.sort(Comparator.comparing(parkingLot ->{
+                long count = parkingLot.parkingSlotsList.stream().
+                        filter(parkingSlot -> parkingSlot.getVehicle() == null).count();
+                return  -count;
+            }));
+        return sortList.get(0);
     }
 }

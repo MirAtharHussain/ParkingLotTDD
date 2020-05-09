@@ -1,28 +1,26 @@
 package com.bridgelabz.ParkingLot;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class ParkingLotOwner implements  ParkingLotObserver {
     private boolean isFullCapacity;
     ParkingLotAttendant parkingLotAttendant = null;
 
-    @Override
-    public void capacityIsFull(){
-        isFullCapacity = true;
-    }
-
-    @Override
-    public void capacityIsAvailable() {
-        isFullCapacity = false;
-    }
-
     public boolean isCapacityFull() {
         return this.isFullCapacity;
     }
 
-    public boolean parkingLotAttendant(Object vehicle) {
+    @Override
+    public void capacityIsFull() {
+        this.isFullCapacity = true;
+    }
+
+    @Override
+    public void capacityIsAvailable() {
+        this.isFullCapacity = false;
+
+    }
+
+    public boolean parkingLotAttendant(Vehicle vehicle) throws ParkingLotException {
         parkingLotAttendant = new ParkingLotAttendant();
         return parkingLotAttendant.parkVehicle(vehicle);
 

@@ -9,4 +9,5 @@ public class Vehicle {
         this.plateNumber = plateNumber;
     }
 
+
 }
