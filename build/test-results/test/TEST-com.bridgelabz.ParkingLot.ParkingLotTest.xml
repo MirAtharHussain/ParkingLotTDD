@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelabz.ParkingLot.ParkingLotTest" tests="15" skipped="0" failures="0" errors="0" timestamp="2020-05-09T21:45:44" hostname="Macifier" time="0.161">
+<testsuite name="com.bridgelabz.ParkingLot.ParkingLotTest" tests="16" skipped="0" failures="0" errors="0" timestamp="2020-05-10T17:10:58" hostname="Macifier" time="0.221">
   <properties/>
-  <testcase name="givenWhenParkingLotSpaceIsAvailableAfterFull_ShouldReturnTrue" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.039"/>
+  <testcase name="givenWhenParkingLotSpaceIsAvailableAfterFull_ShouldReturnTrue" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.065"/>
   <testcase name="givenPrakingLotOwner_WantAttendant_ToParkVehicleInEvenlyManner" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.006"/>
-  <testcase name="givenFindMyVehicle_WhenVehicleIsParked_ShouldReturnTrue" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.001"/>
+  <testcase name="givenFindMyVehicle_WhenVehicleIsParked_ShouldReturnTrue" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.0"/>
   <testcase name="givenWhenParkingLotIsFull_ShouldInformTheSecurity" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.002"/>
-  <testcase name="givenAOtherVehicle_WhenUnparked_ShouldReturnFalse" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.032"/>
+  <testcase name="givenAOtherVehicle_WhenUnparked_ShouldReturnFalse" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.042"/>
   <testcase name="givenAVehicle_WhenParked_ShouldReturnTrue" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.001"/>
-  <testcase name="givenAsParkingLotOwner_WantParkingAttendant_ToParkcars" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.001"/>
+  <testcase name="givenAsParkingLotOwner_WantParkingAttendant_ToParkcars" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.0"/>
   <testcase name="givenSameVehicle_WhenAlreadyParked_ShouldReturnTrue" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.001"/>
-  <testcase name="givenFindMyVehicle_WhenVehicleIsNotParked_ShouldReturnException" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.039"/>
-  <testcase name="givenAVehicle_WhenUnParked_ShouldReturnTrue" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.001"/>
-  <testcase name="givenWhenParkingLot_ISFull_ShouldInformTheOwner" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.002"/>
+  <testcase name="given" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.001"/>
+  <testcase name="givenFindMyVehicle_WhenVehicleIsNotParked_ShouldReturnException" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.04"/>
+  <testcase name="givenAVehicle_WhenUnParked_ShouldReturnTrue" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.0"/>
+  <testcase name="givenWhenParkingLot_ISFull_ShouldInformTheOwner" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.001"/>
   <testcase name="givenWhenParkingLotSpaceIsAvailableAfterFull__InformSecurity_ShouldReturnTrue" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.001"/>
-  <testcase name="givenCapacityIs2_ShouldBeAbleToPark2Vehicles" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.002"/>
-  <testcase name="givenAVehicle_WhenAlreadyParked_ShouldReturnFalse" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.014"/>
-  <testcase name="givenNoVehicleParked_WhenUnPark_ShouldReturnFalse" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.007"/>
+  <testcase name="givenCapacityIs2_ShouldBeAbleToPark2Vehicles" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.001"/>
+  <testcase name="givenAVehicle_WhenAlreadyParked_ShouldReturnFalse" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.027"/>
+  <testcase name="givenNoVehicleParked_WhenUnPark_ShouldReturnFalse" classname="com.bridgelabz.ParkingLot.ParkingLotTest" time="0.014"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[com.bridgelabz.ParkingLot.ParkingLotException: VEHICLE_NOT_FOUND
-	at com.bridgelabz.ParkingLot.ParkingLot.lambda$findVehicle$1(ParkingLot.java:41)
+	at com.bridgelabz.ParkingLot.ParkingLot.lambda$findVehicle$1(ParkingLot.java:39)
 	at java.util.Optional.orElseThrow(Optional.java:290)
-	at com.bridgelabz.ParkingLot.ParkingLot.findVehicle(ParkingLot.java:41)
-	at com.bridgelabz.ParkingLot.ParkingLot.unparkVehicle(ParkingLot.java:33)
-	at com.bridgelabz.ParkingLot.ParkingLotTest.givenAOtherVehicle_WhenUnparked_ShouldReturnFalse(ParkingLotTest.java:80)
+	at com.bridgelabz.ParkingLot.ParkingLot.findVehicle(ParkingLot.java:39)
+	at com.bridgelabz.ParkingLot.ParkingLot.unparkVehicle(ParkingLot.java:31)
+	at com.bridgelabz.ParkingLot.ParkingLotTest.givenAOtherVehicle_WhenUnparked_ShouldReturnFalse(ParkingLotTest.java:88)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -72,10 +73,10 @@
 	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
 	at java.lang.Thread.run(Thread.java:748)
 com.bridgelabz.ParkingLot.ParkingLotException: VEHICLE_NOT_FOUND
-	at com.bridgelabz.ParkingLot.ParkingLotSystem.lambda$findMyVehicle$5(ParkingLotSystem.java:51)
+	at com.bridgelabz.ParkingLot.ParkingLotSystem.lambda$findMyVehicle$5(ParkingLotSystem.java:52)
 	at java.util.Optional.orElseThrow(Optional.java:290)
-	at com.bridgelabz.ParkingLot.ParkingLotSystem.findMyVehicle(ParkingLotSystem.java:51)
-	at com.bridgelabz.ParkingLot.ParkingLotTest.givenFindMyVehicle_WhenVehicleIsNotParked_ShouldReturnException(ParkingLotTest.java:200)
+	at com.bridgelabz.ParkingLot.ParkingLotSystem.findMyVehicle(ParkingLotSystem.java:52)
+	at com.bridgelabz.ParkingLot.ParkingLotTest.givenFindMyVehicle_WhenVehicleIsNotParked_ShouldReturnException(ParkingLotTest.java:208)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -125,8 +126,8 @@ com.bridgelabz.ParkingLot.ParkingLotException: VEHICLE_NOT_FOUND
 	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
 	at java.lang.Thread.run(Thread.java:748)
 com.bridgelabz.ParkingLot.ParkingLotException: Parking Lot is Full
-	at com.bridgelabz.ParkingLot.ParkingLot.parkVehicleInToSlots(ParkingLot.java:26)
-	at com.bridgelabz.ParkingLot.ParkingLotTest.givenAVehicle_WhenAlreadyParked_ShouldReturnFalse(ParkingLotTest.java:46)
+	at com.bridgelabz.ParkingLot.ParkingLot.parkVehicleInToSlots(ParkingLot.java:24)
+	at com.bridgelabz.ParkingLot.ParkingLotTest.givenAVehicle_WhenAlreadyParked_ShouldReturnFalse(ParkingLotTest.java:54)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -176,11 +177,11 @@ com.bridgelabz.ParkingLot.ParkingLotException: Parking Lot is Full
 	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
 	at java.lang.Thread.run(Thread.java:748)
 com.bridgelabz.ParkingLot.ParkingLotException: VEHICLE_NOT_FOUND
-	at com.bridgelabz.ParkingLot.ParkingLot.lambda$findVehicle$1(ParkingLot.java:41)
+	at com.bridgelabz.ParkingLot.ParkingLot.lambda$findVehicle$1(ParkingLot.java:39)
 	at java.util.Optional.orElseThrow(Optional.java:290)
-	at com.bridgelabz.ParkingLot.ParkingLot.findVehicle(ParkingLot.java:41)
-	at com.bridgelabz.ParkingLot.ParkingLot.unparkVehicle(ParkingLot.java:33)
-	at com.bridgelabz.ParkingLot.ParkingLotTest.givenNoVehicleParked_WhenUnPark_ShouldReturnFalse(ParkingLotTest.java:69)
+	at com.bridgelabz.ParkingLot.ParkingLot.findVehicle(ParkingLot.java:39)
+	at com.bridgelabz.ParkingLot.ParkingLot.unparkVehicle(ParkingLot.java:31)
+	at com.bridgelabz.ParkingLot.ParkingLotTest.givenNoVehicleParked_WhenUnPark_ShouldReturnFalse(ParkingLotTest.java:77)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

@@ -20,9 +20,9 @@ public class ParkingLotOwner implements  ParkingLotObserver {
 
     }
 
-    public boolean parkingLotAttendant(Vehicle vehicle) throws ParkingLotException {
+   /* public boolean parkingLotAttendant(Vehicle vehicle) throws ParkingLotException {
         parkingLotAttendant = new ParkingLotAttendant();
         return parkingLotAttendant.parkVehicle(vehicle);
 
-    }
+    }*/
 }

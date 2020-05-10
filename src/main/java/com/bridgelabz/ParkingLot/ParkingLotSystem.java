@@ -8,6 +8,7 @@ public class ParkingLotSystem {
     private List<ParkingLot> parkingLotList;
     private boolean isParkingFull;
     private int actualCapacity;
+    private VehicleDetails details;
 
 
     public ParkingLotSystem(ParkingLot...parkingLots) {
@@ -23,8 +24,8 @@ public class ParkingLotSystem {
         actualCapacity = capacity;
     }
 
-    public ParkingLot getLot() throws ParkingLotException {
-        ParkingLot parkingLot = this.getParkingLot(parkingLotList);
+    public ParkingLot getLot(VehicleDetails details) throws ParkingLotException {
+        ParkingLot parkingLot = details.parkingType.getParkingLot(parkingLotList);
        if( parkingLot.parkingSlotsList.stream().filter(parkingSlot -> parkingSlot.getVehicle()==null).count()==0) {
            this.isParkingFull = true;
            throw new ParkingLotException("Parking Lot is Full", ParkingLotException.ExceptionType.PARKINGLOT_FULL);
@@ -34,14 +35,14 @@ public class ParkingLotSystem {
        return  parkingLot;
     }
 
-    public boolean park(Vehicle vehicle) throws ParkingLotException {
+    public boolean park(Vehicle vehicle, VehicleDetails details) throws ParkingLotException {
             this.observers.forEach((observer)-> {observer.capacityIsFull();});
-            return this.getLot().parkVehicleInToSlots(vehicle);
+            return this.getLot(details).parkVehicleInToSlots(vehicle, details);
     }
 
-    public boolean unPark(Vehicle vehicle) throws ParkingLotException {
+    public boolean unPark(Vehicle vehicle, VehicleDetails vehicleDetails) throws ParkingLotException {
         this.observers.forEach((observer)-> {observer.capacityIsAvailable();});
-        return this.getLot().unparkVehicle(vehicle);
+        return this.getLot(vehicleDetails).unparkVehicle(vehicle);
 
     }
 
@@ -51,14 +52,4 @@ public class ParkingLotSystem {
                 findFirst().orElseThrow(()-> new ParkingLotException("VEHICLE_NOT_FOUND", ParkingLotException.ExceptionType.VEHICLE_NOT_FOUND));
     }
 
-    public ParkingLot getParkingLot(List<ParkingLot> parkingLotList){
-        ArrayList<ParkingLot> sortList = new ArrayList<>();
-        sortList.addAll(parkingLotList);
-        sortList.sort(Comparator.comparing(parkingLot ->{
-                long count = parkingLot.parkingSlotsList.stream().
-                        filter(parkingSlot -> parkingSlot.getVehicle() == null).count();
-                return  -count;
-            }));
-        return sortList.get(0);
-    }
 }

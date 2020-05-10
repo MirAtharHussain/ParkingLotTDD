@@ -2,8 +2,6 @@ package com.bridgelabz.ParkingLot;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class ParkingLot {
 
@@ -18,8 +16,8 @@ public class ParkingLot {
         }
     }
 
-    public boolean parkVehicleInToSlots(Vehicle vehicle) throws ParkingLotException {
-        Integer parkingSlots = this.getParkingSlots(parkingSlotsList);
+    public boolean parkVehicleInToSlots(Vehicle vehicle, VehicleDetails details) throws ParkingLotException {
+        Integer parkingSlots = details.parkingType.getParkingSlots(parkingSlotsList);
         if (this.parkingSlotsList.contains(vehicle))
             throw new ParkingLotException("Vehicle Already Parked", ParkingLotException.ExceptionType.VEHICLE_PARKED_ALREADY);
         if (parkingSlots==0)
@@ -41,9 +39,5 @@ public class ParkingLot {
                 findFirst().orElseThrow(() -> new ParkingLotException("VEHICLE_NOT_FOUND", ParkingLotException.ExceptionType.VEHICLE_NOT_FOUND));
         return parkingSlot.getSlotNum();
 
-    }
-    private Integer getParkingSlots(List<ParkingSlot> parkingSlotsList) {
-        return (IntStream.range(0, parkingSlotsList.size()).
-                filter(i -> parkingSlotsList.get(i).getVehicle()==null).findFirst().orElse(-1))+1;
     }
 }
