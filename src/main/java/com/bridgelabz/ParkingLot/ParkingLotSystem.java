@@ -1,6 +1,7 @@
 package com.bridgelabz.ParkingLot;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class ParkingLotSystem {
 
@@ -52,4 +53,9 @@ public class ParkingLotSystem {
                 findFirst().orElseThrow(()-> new ParkingLotException("VEHICLE_NOT_FOUND", ParkingLotException.ExceptionType.VEHICLE_NOT_FOUND));
     }
 
+    public ArrayList<List<Integer>> getLocation(VehicleProperties vehicleProperties) {
+        return parkingLotList.stream().map(parkingLot -> parkingLot.getParkedVehiclesSlotNumbers(vehicleProperties)).
+                collect(Collectors.toCollection(ArrayList::new));
+
+    }
 }

@@ -2,6 +2,7 @@ package com.bridgelabz.ParkingLot;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ParkingLot {
 
@@ -39,5 +40,17 @@ public class ParkingLot {
                 findFirst().orElseThrow(() -> new ParkingLotException("VEHICLE_NOT_FOUND", ParkingLotException.ExceptionType.VEHICLE_NOT_FOUND));
         return parkingSlot.getSlotNum();
 
+    }
+
+    public List<Integer> getParkedVehiclesSlotNumbers(VehicleProperties vehicleProperties) {
+        return getLocation(this.parkingSlotsList, vehicleProperties);
+    }
+
+    private List<Integer> getLocation(List<ParkingSlot> parkingSlotsList, VehicleProperties vehicleProperties) {
+        return parkingSlotsList.stream().
+                filter(parkingSlot -> parkingSlot.getVehicle() != null &&
+                        parkingSlot.getVehicle().getColor().equals(vehicleProperties.color)).
+                map(ParkingSlot::getSlotNum).
+                collect(Collectors.toCollection(ArrayList::new));
     }
 }

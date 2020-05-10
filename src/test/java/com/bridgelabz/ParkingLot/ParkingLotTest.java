@@ -3,6 +3,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+
 public class ParkingLotTest {
 
     public Vehicle vehicle0;
@@ -10,9 +14,11 @@ public class ParkingLotTest {
     public Vehicle vehicle2;
     public Vehicle vehicle3;
     public Vehicle vehicle4;
+
     ParkingLotSystem parkingLotSystem;
     ParkingLot lot1;
     ParkingLot lot2;
+
     VehicleDetails detail1;
     VehicleDetails detail2;
     VehicleDetails detail3;
@@ -22,11 +28,11 @@ public class ParkingLotTest {
 
     @Before
     public void setUp() throws Exception {
-        vehicle0 = new Vehicle("KA01RG0307");
-        vehicle1 = new Vehicle("KA01RG0640");
-        vehicle2 = new Vehicle("KA01RG0105");
-        vehicle3 = new Vehicle("KA01RG5346");
-        vehicle3 = new Vehicle("KA01RG64556");
+        vehicle0 = new Vehicle("KA01RG0307", VehicleProperties.Color.BLUE);
+        vehicle1 = new Vehicle("KA01RG0640", VehicleProperties.Color.WHITE);
+        vehicle2 = new Vehicle("KA01RG0105", VehicleProperties.Color.RED);
+        vehicle3 = new Vehicle("KA01RG5346", VehicleProperties.Color.WHITE);
+        vehicle4 = new Vehicle("KA01RG6455", VehicleProperties.Color.WHITE);
 
          detail1 = new VehicleDetails(ParkingType.NORMAL);
          detail2 = new VehicleDetails(ParkingType.HANDICAP);
@@ -247,6 +253,18 @@ public class ParkingLotTest {
          parkingLotSystem.park(vehicle1, detail1);
          ParkingLot myVehicle = parkingLotSystem.findMyVehicle(vehicle1);
          Assert.assertEquals(lot2, myVehicle);
+    }
+
+    @Test
+    public void givenPoliceDepartment_WantToKnowLocationOfAllParkedWhiteCars() throws ParkingLotException {
+        parkingLotSystem.park(vehicle0,detail1);
+        parkingLotSystem.park(vehicle1, detail2);
+        parkingLotSystem.park(vehicle2, detail3);
+        parkingLotSystem.park(vehicle3, detail4);
+        ArrayList<List<Integer>> location = parkingLotSystem.getLocation(new VehicleProperties(VehicleProperties.Color.WHITE));
+        location.forEach((loc)->{
+            System.out.println(loc);
+        });
     }
 }
 
