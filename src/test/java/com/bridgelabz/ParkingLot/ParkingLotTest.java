@@ -227,12 +227,12 @@ public class ParkingLotTest {
     }
     //*****UC10
      @Test
-    public void given() throws ParkingLotException {
+    public void givenHandicapDriverVehicle_ParkToNearestFreeSpace() throws ParkingLotException {
 
-       lot1.parkVehicleInToSlots(vehicle1, detail1);
-       lot1.parkVehicleInToSlots(vehicle2, detail2);
+     parkingLotSystem.park(vehicle0, detail1);
+     parkingLotSystem.park(vehicle1, detail2);
          int vehicle = lot1.findVehicle(vehicle1);
-      Assert.assertEquals(1, vehicle);
+      Assert.assertEquals(2, vehicle);
 
      }
 }
