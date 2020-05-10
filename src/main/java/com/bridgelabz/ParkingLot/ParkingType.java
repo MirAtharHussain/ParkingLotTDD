@@ -46,7 +46,27 @@ public enum ParkingType {
                 return (IntStream.range(0, parkingSlotsList.size()).
                         filter(i -> parkingSlotsList.get(i).getVehicle()==null).findFirst().orElse(-1))+1;
             }
-        };
+        },
+    LARGE{
+        @Override
+        public ParkingLot getParkingLot(List<ParkingLot> parkingLotList) {
+            for (ParkingLot parkingLot:parkingLotList) {
+               for (int i=0; i<=parkingLot.parkingSlotsList.size(); i++){
+                   if (parkingLot.parkingSlotsList.get(i).getVehicle()==null && parkingLot.parkingSlotsList.get(i+1).getVehicle()==null){
+                       return parkingLot;
+                    }
+
+                }
+            }
+            return null;
+        }
+
+        @Override
+        public Integer getParkingSlots(List<ParkingSlot> parkingSlotsList) {
+            return (IntStream.range(0, parkingSlotsList.size()).
+                    filter(i -> parkingSlotsList.get(i).getVehicle()==null && parkingSlotsList.get(i+1).getVehicle()==null).findFirst().orElse(-1))+1;
+        }
+    };
 
         public   ParkingType type;
 

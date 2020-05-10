@@ -9,6 +9,7 @@ public class ParkingLotTest {
     public Vehicle vehicle1;
     public Vehicle vehicle2;
     public Vehicle vehicle3;
+    public Vehicle vehicle4;
     ParkingLotSystem parkingLotSystem;
     ParkingLot lot1;
     ParkingLot lot2;
@@ -16,18 +17,23 @@ public class ParkingLotTest {
     VehicleDetails detail2;
     VehicleDetails detail3;
     VehicleDetails detail4;
+    VehicleDetails detail5;
+    VehicleDetails detail6;
 
     @Before
     public void setUp() throws Exception {
         vehicle0 = new Vehicle("KA01RG0307");
         vehicle1 = new Vehicle("KA01RG0640");
         vehicle2 = new Vehicle("KA01RG0105");
-        vehicle2 = new Vehicle("KA01RG5346");
+        vehicle3 = new Vehicle("KA01RG5346");
+        vehicle3 = new Vehicle("KA01RG64556");
 
          detail1 = new VehicleDetails(ParkingType.NORMAL);
          detail2 = new VehicleDetails(ParkingType.HANDICAP);
          detail3 = new VehicleDetails(ParkingType.HANDICAP);
          detail4 = new VehicleDetails(ParkingType.NORMAL);
+         detail5 = new VehicleDetails(ParkingType.LARGE);
+         detail6 = new VehicleDetails(ParkingType.LARGE);
 
 
         lot1 = new ParkingLot(2);
@@ -101,7 +107,7 @@ public class ParkingLotTest {
             parkingLotSystem.park(vehicle0, detail1);
             parkingLotSystem.park(vehicle1, detail2);
             parkingLotSystem.park(vehicle2, detail3);
-            parkingLotSystem.park(vehicle3, detail4);
+            parkingLotSystem.park(vehicle4, detail2);
         } catch (ParkingLotException e) { }
         boolean capacityFull = owner.isCapacityFull();
         Assert.assertTrue(capacityFull);
@@ -235,6 +241,13 @@ public class ParkingLotTest {
       Assert.assertEquals(2, vehicle);
 
      }
+     @Test
+    public void givenParkingLotOwner_WantLargeToPark_InLotWhichHasHigheshFreeSpace() throws ParkingLotException {
+        parkingLotSystem.park(vehicle0, detail5);//lot1
+         parkingLotSystem.park(vehicle1, detail1);
+         ParkingLot myVehicle = parkingLotSystem.findMyVehicle(vehicle1);
+         Assert.assertEquals(lot2, myVehicle);
+    }
 }
 
 
