@@ -313,9 +313,7 @@ public class ParkingLotTest {
         parkingLotSystem.park(vehicle1, detail2);
         ArrayList<ArrayList<Vehicle>> vehicleParkedInLast30Minutes = parkingLotSystem.getVehicleParkedInLast30Minutes();
     Assert.assertEquals(2, vehicleParkedInLast30Minutes.size());
-
-
-    }*/
+}*/
 }
 
 
