@@ -43,13 +43,25 @@ public class ParkingLot {
     }
 
     public List<Integer> getParkedVehiclesSlotNumbers(VehicleProperties vehicleProperties) {
-        return getLocation(this.parkingSlotsList, vehicleProperties);
+        if (vehicleProperties.equals(vehicleProperties.color))
+            return this.getLocationByColor(this.parkingSlotsList, vehicleProperties);
+        else
+            return this.getLocation(this.parkingSlotsList, vehicleProperties);
     }
 
-    private List<Integer> getLocation(List<ParkingSlot> parkingSlotsList, VehicleProperties vehicleProperties) {
+    public List<Integer> getLocationByColor(List<ParkingSlot> parkingSlotsList, VehicleProperties vehicleProperties) {
         return parkingSlotsList.stream().
                 filter(parkingSlot -> parkingSlot.getVehicle() != null &&
                         parkingSlot.getVehicle().getColor().equals(vehicleProperties.color)).
+                map(ParkingSlot::getSlotNum).
+                collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    public List<Integer> getLocation(List<ParkingSlot> parkingSlotsList, VehicleProperties vehicleProperties) {
+        return parkingSlotsList.stream().
+                filter(parkingSlot -> parkingSlot.getVehicle() != null &&
+                        parkingSlot.getVehicle().getColor().equals(vehicleProperties.color) &&
+                        parkingSlot.getVehicle().getModel().equals(vehicleProperties.model)).
                 map(ParkingSlot::getSlotNum).
                 collect(Collectors.toCollection(ArrayList::new));
     }
