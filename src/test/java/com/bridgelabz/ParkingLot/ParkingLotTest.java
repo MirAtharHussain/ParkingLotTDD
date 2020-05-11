@@ -255,7 +255,7 @@ public class ParkingLotTest {
         Assert.assertEquals(2, vehicle);
 
     }
-
+//*****uc11
     @Test
     public void givenParkingLotOwner_WantLargeToPark_InLotWhichHasHigheshFreeSpace() throws ParkingLotException {
         parkingLotSystem.park(vehicle0, detail5);//lot1
@@ -263,7 +263,7 @@ public class ParkingLotTest {
         ParkingLot myVehicle = parkingLotSystem.findMyVehicle(vehicle1);
         Assert.assertEquals(lot2, myVehicle);
     }
-
+//****uc12
     @Test
     public void givenPoliceDepartment_WantToKnowLocationOfAllParkedWhiteCars() throws ParkingLotException {
         parkingLotSystem.park(vehicle0, detail1);
@@ -275,7 +275,7 @@ public class ParkingLotTest {
             System.out.println(location);
         }
     }
-
+//****uc13
     @Test
     public void givenPoliceDepartmentWantsToKnow_LocationAttendantName_OfBlueToyota() throws ParkingLotException {
         Integer locationNumber =0;
@@ -293,21 +293,23 @@ public class ParkingLotTest {
         Assert.assertEquals(expected, locationNumber);
         Assert.assertEquals("Raj", vehicle0.getAttendantName());
     }
-
+//****uc14
     @Test
     public void givenPoliceDepartmentWant_ToKnow_AllBMWParkedLocation() throws ParkingLotException {
-        Object[] locationNumber =null;
-        parkingLotSystem.park(vehicle0, detail1);
-        parkingLotSystem.park(vehicle1, detail2);
-        parkingLotSystem.park(vehicle2, detail3);
-        parkingLotSystem.park(vehicle3, detail4);
-        List<Integer> locationByModel = lot1.getLocationByModel(new VehicleProperties(VehicleProperties.Model.BMW));
-        for (Integer i : locationByModel){
-            locationNumber =locationByModel.toArray();
-        }
-        Object[] expected = {2};
-        Assert.assertArrayEquals(expected, locationNumber);
+        lot1.parkVehicleInToSlots(vehicle0, detail1);
+        lot1.parkVehicleInToSlots(vehicle3, detail1);
 
+        List<Integer> locationByModel = lot1.getLocationByModel(new VehicleProperties(VehicleProperties.Model.BMW));
+        Assert.assertEquals(1, locationByModel.size());
+
+    }
+//****uc15
+    @Test
+    public void givenPoliceDepartmentWants_AllParkedVehiclesInLast30Minutes() throws ParkingLotException {
+       lot1.parkVehicleInToSlots(vehicle0, detail1);
+       lot1.parkVehicleInToSlots(vehicle1, detail1);
+        ArrayList<Vehicle> parkedVehicleInLast30Min = lot1.getParkedVehicleInLast30Min();
+        Assert.assertEquals(2, parkedVehicleInLast30Min.size());
     }
 }
 

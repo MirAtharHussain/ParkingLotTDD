@@ -1,5 +1,6 @@
 package com.bridgelabz.ParkingLot;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,7 +14,7 @@ public class ParkingLot {
         this.parkingSlotsList = new ArrayList<>();
         this.actualCapacity = capacity;
         for (int i=1; i<=actualCapacity; i++){
-            parkingSlotsList.add(new ParkingSlot(i, null));
+            parkingSlotsList.add(new ParkingSlot(i, null, null));
         }
     }
 
@@ -24,12 +25,14 @@ public class ParkingLot {
         if (parkingSlots==0)
             throw new ParkingLotException("Parking Lot is Full", ParkingLotException.ExceptionType.PARKINGLOT_FULL);
         parkingSlotsList.get(parkingSlots - 1).setVehicle(vehicle);
+        parkingSlotsList.get(parkingSlots - 1).setTime(LocalDateTime.now());
         return true;
 
     }
 
     public boolean unparkVehicle(Vehicle vehicle) throws ParkingLotException {
         int parkedVehicle = findVehicle(vehicle);
+        parkingSlotsList.get(parkedVehicle - 1).setVehicle(null);
         parkingSlotsList.get(parkedVehicle - 1).setVehicle(null);
         return true;
     }
@@ -75,5 +78,12 @@ public class ParkingLot {
                         parkingSlot.getVehicle().getModel().equals(vehicleProperties.model)).
                 map(ParkingSlot::getSlotNum).
                 collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    public ArrayList<Vehicle> getParkedVehicleInLast30Min() {
+        return parkingSlotsList.stream().
+                filter(parkingSlot -> parkingSlot.getVehicle() != null &&
+                        (parkingSlot.getTime().getMinute() - LocalDateTime.now().getMinute() <= 30)).
+                 map(ParkingSlot::getVehicle).collect(Collectors.toCollection(ArrayList::new));
     }
 }
