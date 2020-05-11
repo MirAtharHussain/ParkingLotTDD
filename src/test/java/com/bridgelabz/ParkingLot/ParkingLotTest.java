@@ -28,7 +28,7 @@ public class ParkingLotTest {
     @Before
     public void setUp() throws Exception {
         vehicle0 = new Vehicle("KA01RG0307", "Raj", VehicleProperties.Color.BLUE, VehicleProperties.Model.TOYOTA);
-        vehicle1 = new Vehicle("KA01RG0640", "Akshay", VehicleProperties.Color.WHITE, VehicleProperties.Model.BMW);
+        vehicle1 = new Vehicle("KA01RG0640", "Akshay", VehicleProperties.Color.WHITE, VehicleProperties.Model.MERCEDES);
         vehicle2 = new Vehicle("KA01RG0105", "Rahul", VehicleProperties.Color.RED, VehicleProperties.Model.TOYOTA);
         vehicle3 = new Vehicle("KA01RG5346", "Saif", VehicleProperties.Color.WHITE, VehicleProperties.Model.BMW);
         vehicle4 = new Vehicle("KA01RG6455", "Lohith", VehicleProperties.Color.WHITE, VehicleProperties.Model.TOYOTA);
@@ -278,7 +278,7 @@ public class ParkingLotTest {
 
     @Test
     public void givenPoliceDepartmentWantsToKnow_LocationAttendantName_OfBlueToyota() throws ParkingLotException {
-        //Integer position =0;
+        Integer locationNumber =0;
         parkingLotSystem.park(vehicle0, detail1);
         parkingLotSystem.park(vehicle1, detail2);
         parkingLotSystem.park(vehicle2, detail3);
@@ -286,9 +286,28 @@ public class ParkingLotTest {
         ArrayList<List<Integer>> location = parkingLotSystem.getLocation(new VehicleProperties(VehicleProperties.Color.BLUE, VehicleProperties.Model.TOYOTA));
         for (List<Integer> i : location) { // iterate -list by list
             for ( Integer position : i)  //iterate element by element in a list
-                System.out.println(position);
+                locationNumber= position;
+
         }
+        Integer expected =1;
+        Assert.assertEquals(expected, locationNumber);
         Assert.assertEquals("Raj", vehicle0.getAttendantName());
+    }
+
+    @Test
+    public void givenPoliceDepartmentWant_ToKnow_AllBMWParkedLocation() throws ParkingLotException {
+        Object[] locationNumber =null;
+        parkingLotSystem.park(vehicle0, detail1);
+        parkingLotSystem.park(vehicle1, detail2);
+        parkingLotSystem.park(vehicle2, detail3);
+        parkingLotSystem.park(vehicle3, detail4);
+        List<Integer> locationByModel = lot1.getLocationByModel(new VehicleProperties(VehicleProperties.Model.BMW));
+        for (Integer i : locationByModel){
+            locationNumber =locationByModel.toArray();
+        }
+        Object[] expected = {2};
+        Assert.assertArrayEquals(expected, locationNumber);
+
     }
 }
 

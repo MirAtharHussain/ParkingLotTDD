@@ -19,4 +19,7 @@ public class VehicleProperties {
     public VehicleProperties(Color color) {
         this.color = color;
     }
+    public VehicleProperties(Model model) {
+        this.model = model;
+    }
 }
