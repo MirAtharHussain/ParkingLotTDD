@@ -58,4 +58,9 @@ public class ParkingLotSystem {
                 collect(Collectors.toCollection(ArrayList::new));
 
     }
+
+    /*public ArrayList<ArrayList<Vehicle>> getVehicleParkedInLast30Minutes() {
+        return parkingLotList.stream().map(parkingLot -> parkingLot.getParkedVehiclesInLast30Min()).
+                collect(Collectors.toCollection(ArrayList::new));
+    }*/
 }

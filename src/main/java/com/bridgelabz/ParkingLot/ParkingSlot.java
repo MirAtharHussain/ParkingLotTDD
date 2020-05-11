@@ -1,14 +1,16 @@
 package com.bridgelabz.ParkingLot;
 
-import java.util.Objects;
+import java.time.LocalDateTime;
 
 public class ParkingSlot {
+    private  LocalDateTime time;
     private int slotNum;
     private Vehicle vehicle;
 
-    public ParkingSlot(int slotNum, Vehicle vehicle) {
+    public ParkingSlot(int slotNum, LocalDateTime time, Vehicle vehicle) {
         this.slotNum = slotNum;
         this.vehicle = vehicle;
+        this.time =time;
     }
 
     @Override
@@ -30,5 +32,13 @@ public class ParkingSlot {
 
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
+    }
+
+    public LocalDateTime getTime() {
+        return time;
+    }
+
+    public void setTime(LocalDateTime time) {
+        this.time = time;
     }
 }

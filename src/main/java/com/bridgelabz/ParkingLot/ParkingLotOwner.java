@@ -3,7 +3,6 @@ package com.bridgelabz.ParkingLot;
 
 public class ParkingLotOwner implements  ParkingLotObserver {
     private boolean isFullCapacity;
-    ParkingLotAttendant parkingLotAttendant = null;
 
     public boolean isCapacityFull() {
         return this.isFullCapacity;
@@ -20,9 +19,4 @@ public class ParkingLotOwner implements  ParkingLotObserver {
 
     }
 
-   /* public boolean parkingLotAttendant(Vehicle vehicle) throws ParkingLotException {
-        parkingLotAttendant = new ParkingLotAttendant();
-        return parkingLotAttendant.parkVehicle(vehicle);
-
-    }*/
 }

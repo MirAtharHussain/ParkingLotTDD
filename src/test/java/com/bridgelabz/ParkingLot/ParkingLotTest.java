@@ -278,37 +278,45 @@ public class ParkingLotTest {
 
     @Test
     public void givenPoliceDepartmentWantsToKnow_LocationAttendantName_OfBlueToyota() throws ParkingLotException {
-        Integer locationNumber =0;
+        Integer locationNumber = 0;
         parkingLotSystem.park(vehicle0, detail1);
         parkingLotSystem.park(vehicle1, detail2);
         parkingLotSystem.park(vehicle2, detail3);
         parkingLotSystem.park(vehicle3, detail4);
         ArrayList<List<Integer>> location = parkingLotSystem.getLocation(new VehicleProperties(VehicleProperties.Color.BLUE, VehicleProperties.Model.TOYOTA));
         for (List<Integer> i : location) { // iterate -list by list
-            for ( Integer position : i)  //iterate element by element in a list
-                locationNumber= position;
+            for (Integer position : i)  //iterate element by element in a list
+                locationNumber = position;
 
         }
-        Integer expected =1;
+        Integer expected = 1;
         Assert.assertEquals(expected, locationNumber);
         Assert.assertEquals("Raj", vehicle0.getAttendantName());
     }
 
     @Test
     public void givenPoliceDepartmentWant_ToKnow_AllBMWParkedLocation() throws ParkingLotException {
-        Object[] locationNumber =null;
+        Object[] locationNumber = null;
         parkingLotSystem.park(vehicle0, detail1);
         parkingLotSystem.park(vehicle1, detail2);
         parkingLotSystem.park(vehicle2, detail3);
         parkingLotSystem.park(vehicle3, detail4);
         List<Integer> locationByModel = lot1.getLocationByModel(new VehicleProperties(VehicleProperties.Model.BMW));
-        for (Integer i : locationByModel){
-            locationNumber =locationByModel.toArray();
+        for (Integer i : locationByModel) {
+            System.out.println(i);
         }
-        Object[] expected = {2};
-        Assert.assertArrayEquals(expected, locationNumber);
-
     }
+
+  /*  @Test
+    public void givenPoliceDepartmentWantsToKnow_VehiclesParkedInLast30Mins() throws ParkingLotException {
+        parkingLotSystem.park(vehicle0, detail1);
+        parkingLotSystem.park(vehicle1, detail2);
+        ArrayList<ArrayList<Vehicle>> vehicleParkedInLast30Minutes = parkingLotSystem.getVehicleParkedInLast30Minutes();
+    Assert.assertEquals(2, vehicleParkedInLast30Minutes.size());
+
+
+    }*/
 }
+
 
 

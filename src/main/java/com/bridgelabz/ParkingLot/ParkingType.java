@@ -15,7 +15,7 @@ public enum ParkingType {
                 sortList.sort(Comparator.comparing(parkingLot ->{
                     long count = parkingLot.parkingSlotsList.stream().
                             filter(parkingSlot -> parkingSlot.getVehicle() == null).count();
-                    return  -count;
+                    return  count;
                 }));
                 return sortList.get(0);
             }
