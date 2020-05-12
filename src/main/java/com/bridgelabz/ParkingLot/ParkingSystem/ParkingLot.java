@@ -1,6 +1,9 @@
 package com.bridgelabz.ParkingLot.ParkingSystem;
 
 import com.bridgelabz.ParkingLot.Exception.ParkingLotException;
+import com.bridgelabz.ParkingLot.StratergyPattern.VehiceLocByColorImpl;
+import com.bridgelabz.ParkingLot.StratergyPattern.VehicleLocByColorAndModelImpl;
+import com.bridgelabz.ParkingLot.StratergyPattern.VehicleLocByModel;
 import com.bridgelabz.ParkingLot.VehicleInformation.Vehicle;
 import com.bridgelabz.ParkingLot.VehicleInformation.VehicleDetails;
 import com.bridgelabz.ParkingLot.VehicleInformation.VehicleProperties;
@@ -14,6 +17,9 @@ public class ParkingLot {
 
     private  int actualCapacity;
     public List<ParkingSlot> parkingSlotsList;
+    public VehiceLocByColorImpl color =  new VehiceLocByColorImpl();
+    public VehicleLocByModel model = new VehicleLocByModel();
+    public VehicleLocByColorAndModelImpl colorAndModel = new VehicleLocByColorAndModelImpl();
 
     public ParkingLot(int capacity) {
         this.parkingSlotsList = new ArrayList<>();
@@ -52,14 +58,14 @@ public class ParkingLot {
 
     public List<Integer> getParkedVehiclesSlotNumbers(VehicleProperties vehicleProperties) {
         if (vehicleProperties.equals(vehicleProperties.color))
-            return this.getLocationByColor(this.parkingSlotsList, vehicleProperties);
+            return color.getLocation(this.parkingSlotsList, vehicleProperties);
         else if (vehicleProperties.equals(vehicleProperties.model))
-            return  this.getLocationByModel(vehicleProperties);
+            return  model.getLocation(this.parkingSlotsList, vehicleProperties);
         else
-            return this.getLocation(this.parkingSlotsList, vehicleProperties);
+            return colorAndModel.getLocation(this.parkingSlotsList, vehicleProperties);
     }
 
-    public List<Integer> getLocationByColor(List<ParkingSlot> parkingSlotsList, VehicleProperties vehicleProperties) {
+   /* public List<Integer> getLocationByColor(List<ParkingSlot> parkingSlotsList, VehicleProperties vehicleProperties) {
         return parkingSlotsList.stream().
                 filter(parkingSlot -> parkingSlot.getVehicle() != null &&
                         parkingSlot.getVehicle().getColor().equals(vehicleProperties.color)).
@@ -68,7 +74,7 @@ public class ParkingLot {
     }
 
 
-    public List<Integer> getLocationByModel( VehicleProperties vehicleProperties) {
+    public List<Integer> getLocationByModel( List<ParkingSlot> parkingSlotsList,VehicleProperties vehicleProperties) {
         return parkingSlotsList.stream().
                 filter(parkingSlot -> parkingSlot.getVehicle() != null &&
                         parkingSlot.getVehicle().getModel().equals(vehicleProperties.model)).
@@ -84,7 +90,7 @@ public class ParkingLot {
                 map(ParkingSlot::getSlotNum).
                 collect(Collectors.toCollection(ArrayList::new));
     }
-
+*/
     public ArrayList<Vehicle> getParkedVehicleInLast30Min() {
         return parkingSlotsList.stream().
                 filter(parkingSlot -> parkingSlot.getVehicle() != null &&

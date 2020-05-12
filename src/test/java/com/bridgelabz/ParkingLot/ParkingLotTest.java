@@ -308,8 +308,8 @@ public class ParkingLotTest {
         lot1.parkVehicleInToSlots(vehicle0, detail1);
         lot1.parkVehicleInToSlots(vehicle3, detail1);
 
-        List<Integer> locationByModel = lot1.getLocationByModel(new VehicleProperties(VehicleProperties.Model.BMW));
-        Assert.assertEquals(1, locationByModel.size());
+        ArrayList<List<Integer>> locationByModel = parkingLotSystem.getLocation(new VehicleProperties(VehicleProperties.Model.BMW));
+        Assert.assertEquals(2, locationByModel.size());
 
     }
 //****uc15
