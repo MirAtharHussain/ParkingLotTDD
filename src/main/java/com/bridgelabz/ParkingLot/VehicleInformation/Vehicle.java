@@ -1,4 +1,4 @@
-package com.bridgelabz.ParkingLot;
+package com.bridgelabz.ParkingLot.VehicleInformation;
 
 public class Vehicle {
 

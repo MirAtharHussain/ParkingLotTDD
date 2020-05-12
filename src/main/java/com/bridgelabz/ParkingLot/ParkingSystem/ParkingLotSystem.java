@@ -1,10 +1,19 @@
-package com.bridgelabz.ParkingLot;
+package com.bridgelabz.ParkingLot.ParkingSystem;
+
+import com.bridgelabz.ParkingLot.Exception.ParkingLotException;
+import com.bridgelabz.ParkingLot.Mockito.ParkingLotMockito;
+import com.bridgelabz.ParkingLot.Observer.ParkingLotObserver;
+import com.bridgelabz.ParkingLot.VehicleInformation.Vehicle;
+import com.bridgelabz.ParkingLot.VehicleInformation.VehicleDetails;
+import com.bridgelabz.ParkingLot.VehicleInformation.VehicleMockito;
+import com.bridgelabz.ParkingLot.VehicleInformation.VehicleProperties;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class ParkingLotSystem {
 
+    private  ParkingLotMockito parkinLotMockito;
     private  List<ParkingLotObserver> observers;
     private List<ParkingLot> parkingLotList;
     private boolean isParkingFull;
@@ -17,12 +26,46 @@ public class ParkingLotSystem {
         this.parkingLotList = new ArrayList<>();
         this.parkingLotList.addAll(Arrays.asList(parkingLots));
     }
+    /*-----------------------------------Mockito  Implementation--------------------------------*/
+
+    public ParkingLotSystem(ParkingLotMockito...parkingLots) {
+        this.parkinLotMockito = parkingLots[0];
+    }
+        public void parkVehicle(VehicleMockito vehicle)  {
+
+            this.parkinLotMockito.park(vehicle);
+
+        }
+
+        public boolean isVehicleParked(VehicleMockito vehicle)  {
+
+            return this.parkinLotMockito.isVehicleParked(vehicle);
+
+        }
+
+        public void unParkVehicle(VehicleMockito vehicle) {
+
+            this.parkinLotMockito.unPark(vehicle);
+
+        }
+
+        public int findVehicleSlot(VehicleMockito vehicle) {
+
+            return this.parkinLotMockito.findSlot(vehicle);
+
+        }
+
+        public int findVehicleLotNumber(VehicleMockito vehicle) {
+
+            return this.parkinLotMockito.findLotNumber(vehicle);
+
+        }
+
+    /*-----------------------------------Mockito  Implementation--------------------------------*/
+
 
     public void registerParkingLotObserver(ParkingLotObserver observer) {
         this.observers.add(observer);
-    }
-    public  void setCapacity(int capacity){
-        actualCapacity = capacity;
     }
 
     public ParkingLot getLot(VehicleDetails details) throws ParkingLotException {
@@ -39,7 +82,7 @@ public class ParkingLotSystem {
     public boolean park(Vehicle vehicle, VehicleDetails details) throws ParkingLotException {
             this.observers.forEach((observer)-> {observer.capacityIsFull();});
             return this.getLot(details).parkVehicleInToSlots(vehicle, details);
-    }
+}
 
     public boolean unPark(Vehicle vehicle, VehicleDetails vehicleDetails) throws ParkingLotException {
         this.observers.forEach((observer)-> {observer.capacityIsAvailable();});

@@ -1,4 +1,4 @@
-package com.bridgelabz.ParkingLot;
+package com.bridgelabz.ParkingLot.Observer;
 
 
 public class ParkingLotOwner implements  ParkingLotObserver {
@@ -16,7 +16,6 @@ public class ParkingLotOwner implements  ParkingLotObserver {
     @Override
     public void capacityIsAvailable() {
         this.isFullCapacity = false;
-
     }
 
 }

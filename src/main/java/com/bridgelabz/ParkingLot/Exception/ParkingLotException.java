@@ -1,7 +1,7 @@
-package com.bridgelabz.ParkingLot;
+package com.bridgelabz.ParkingLot.Exception;
 
 public class ParkingLotException extends Exception {
-    enum ExceptionType{
+    public enum ExceptionType{
         PARKINGLOT_FULL, VEHICLE_NOT_FOUND, VEHICLE_PARKED_ALREADY
     }
 

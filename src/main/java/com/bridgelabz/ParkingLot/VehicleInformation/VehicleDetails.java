@@ -1,9 +1,6 @@
-package com.bridgelabz.ParkingLot;
+package com.bridgelabz.ParkingLot.VehicleInformation;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.stream.IntStream;
+import com.bridgelabz.ParkingLot.enums.ParkingType;
 
 public class VehicleDetails {
 

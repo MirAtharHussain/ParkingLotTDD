@@ -1,4 +1,7 @@
-package com.bridgelabz.ParkingLot;
+package com.bridgelabz.ParkingLot.enums;
+
+import com.bridgelabz.ParkingLot.ParkingSystem.ParkingLot;
+import com.bridgelabz.ParkingLot.ParkingSystem.ParkingSlot;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -30,7 +33,7 @@ public enum ParkingType {
             @Override
             public ParkingLot getParkingLot(List<ParkingLot> parkingLotList) {
                 for (ParkingLot parkingLot:parkingLotList) {
-                    //  parkingLot.parkingSlotsList.forEach(parkingSlot -> {if (parkingSlot.getVehicle() == null){return parkingLot;};});
+                    //  parkingLot.parkingSlotsList.forEach(parkingSlot -> {if (parkingSlot.getVehicle() == null)return parkingLot;};});
                     for (ParkingSlot parkingSlot:parkingLot.parkingSlotsList) {
                         if (parkingSlot.getVehicle() == null){
                             return parkingLot;

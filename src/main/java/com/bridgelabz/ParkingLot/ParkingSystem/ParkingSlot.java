@@ -1,7 +1,8 @@
-package com.bridgelabz.ParkingLot;
+package com.bridgelabz.ParkingLot.ParkingSystem;
+
+import com.bridgelabz.ParkingLot.VehicleInformation.Vehicle;
 
 import java.time.LocalDateTime;
-import java.util.Objects;
 
 public class ParkingSlot {
     private LocalDateTime time;
@@ -12,15 +13,6 @@ public class ParkingSlot {
         this.slotNum = slotNum;
         this.vehicle = vehicle;
         this.time = time;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ParkingSlot that = (ParkingSlot) o;
-        return slotNum == that.slotNum &&
-                vehicle.equals(that.vehicle);
     }
 
     public int getSlotNum() {
