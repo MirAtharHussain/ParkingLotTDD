@@ -320,6 +320,26 @@ public class ParkingLotTest {
         ArrayList<Vehicle> parkedVehicleInLast30Min = lot1.getParkedVehicleInLast30Min();
         Assert.assertEquals(2, parkedVehicleInLast30Min.size());
     }
+
+    @Test
+    public void givenPolice_WantsToKnowLocationOf_SmallAndHandicapVehicle() throws ParkingLotException {
+        ParkingLot parkingLot1 = new ParkingLot(5);
+        ParkingLot parkingLot2 = new ParkingLot(8);
+        ParkingLot parkingLot3= new ParkingLot(2);
+
+        ParkingLotSystem parkingLotSystem1 = new ParkingLotSystem(parkingLot1, parkingLot2, parkingLot3);
+
+        parkingLotSystem1.park(vehicle0, detail2);
+        parkingLotSystem1.park(vehicle1, detail1);
+        parkingLotSystem1.park(vehicle2, detail5);
+        parkingLotSystem1.park(vehicle3, detail2);
+        parkingLotSystem1.park(vehicle4, detail3);
+
+        List vehicles = parkingLotSystem1.getVehiclesParkedInRowBOrD(ParkingType.HANDICAP);
+        Assert.assertEquals(3, vehicles.size());
+    }
+
+
 }
 
 

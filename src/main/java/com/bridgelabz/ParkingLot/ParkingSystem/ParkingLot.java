@@ -1,12 +1,14 @@
 package com.bridgelabz.ParkingLot.ParkingSystem;
 
 import com.bridgelabz.ParkingLot.Exception.ParkingLotException;
+import com.bridgelabz.ParkingLot.Exception.Row;
 import com.bridgelabz.ParkingLot.StratergyPattern.VehiceLocByColorImpl;
 import com.bridgelabz.ParkingLot.StratergyPattern.VehicleLocByColorAndModelImpl;
 import com.bridgelabz.ParkingLot.StratergyPattern.VehicleLocByModel;
 import com.bridgelabz.ParkingLot.VehicleInformation.Vehicle;
 import com.bridgelabz.ParkingLot.VehicleInformation.VehicleDetails;
 import com.bridgelabz.ParkingLot.VehicleInformation.VehicleProperties;
+import com.bridgelabz.ParkingLot.enums.ParkingType;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -65,36 +67,20 @@ public class ParkingLot {
             return colorAndModel.getLocation(this.parkingSlotsList, vehicleProperties);
     }
 
-   /* public List<Integer> getLocationByColor(List<ParkingSlot> parkingSlotsList, VehicleProperties vehicleProperties) {
-        return parkingSlotsList.stream().
-                filter(parkingSlot -> parkingSlot.getVehicle() != null &&
-                        parkingSlot.getVehicle().getColor().equals(vehicleProperties.color)).
-                map(ParkingSlot::getSlotNum).
-                collect(Collectors.toCollection(ArrayList::new));
-    }
 
-
-    public List<Integer> getLocationByModel( List<ParkingSlot> parkingSlotsList,VehicleProperties vehicleProperties) {
-        return parkingSlotsList.stream().
-                filter(parkingSlot -> parkingSlot.getVehicle() != null &&
-                        parkingSlot.getVehicle().getModel().equals(vehicleProperties.model)).
-                map(ParkingSlot::getSlotNum).
-                collect(Collectors.toCollection(ArrayList::new));
-    }
-
-    public List<Integer> getLocation(List<ParkingSlot> parkingSlotsList, VehicleProperties vehicleProperties) {
-        return parkingSlotsList.stream().
-                filter(parkingSlot -> parkingSlot.getVehicle() != null &&
-                        parkingSlot.getVehicle().getColor().equals(vehicleProperties.color) &&
-                        parkingSlot.getVehicle().getModel().equals(vehicleProperties.model)).
-                map(ParkingSlot::getSlotNum).
-                collect(Collectors.toCollection(ArrayList::new));
-    }
-*/
     public ArrayList<Vehicle> getParkedVehicleInLast30Min() {
         return parkingSlotsList.stream().
                 filter(parkingSlot -> parkingSlot.getVehicle() != null &&
                         (parkingSlot.getTime().getMinute() - LocalDateTime.now().getMinute() <= 30)).
                  map(ParkingSlot::getVehicle).collect(Collectors.toCollection(ArrayList::new));
+    }
+
+
+    public List getVehiclesParkedInRowBOrD(ParkingType type) {
+        return parkingSlotsList.stream().
+                filter(parkingSlot -> parkingSlot.getVehicle() != null &&
+                                type.equals(type)).
+                        map(ParkingSlot::getSlotNum).
+                                collect(Collectors.toCollection(ArrayList::new));
     }
 }

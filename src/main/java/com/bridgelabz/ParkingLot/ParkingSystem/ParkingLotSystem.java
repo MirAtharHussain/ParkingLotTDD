@@ -7,6 +7,7 @@ import com.bridgelabz.ParkingLot.VehicleInformation.Vehicle;
 import com.bridgelabz.ParkingLot.VehicleInformation.VehicleDetails;
 import com.bridgelabz.ParkingLot.VehicleInformation.VehicleMockito;
 import com.bridgelabz.ParkingLot.VehicleInformation.VehicleProperties;
+import com.bridgelabz.ParkingLot.enums.ParkingType;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -100,5 +101,10 @@ public class ParkingLotSystem {
         return parkingLotList.stream().map(parkingLot -> parkingLot.getParkedVehiclesSlotNumbers(vehicleProperties)).
                 collect(Collectors.toCollection(ArrayList::new));
 
+    }
+
+    public List getVehiclesParkedInRowBOrD(ParkingType vehicleDetails) throws ParkingLotException {
+        return parkingLotList.stream().map(parkingLot -> parkingLot.getVehiclesParkedInRowBOrD(vehicleDetails)).
+                collect(Collectors.toCollection(ArrayList::new));
     }
 }

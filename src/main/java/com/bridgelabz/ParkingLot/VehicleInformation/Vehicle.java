@@ -1,11 +1,14 @@
 package com.bridgelabz.ParkingLot.VehicleInformation;
 
+import com.bridgelabz.ParkingLot.Exception.Row;
+
 public class Vehicle {
 
     private  String attendantName;
     private VehicleProperties.Model model;
     public VehicleProperties.Color color;
     private String plateNumber;
+    public Row row;
 
     public Vehicle(String plateNumber,String attendantName, VehicleProperties.Color color, VehicleProperties.Model model) {
         this.plateNumber = plateNumber;
